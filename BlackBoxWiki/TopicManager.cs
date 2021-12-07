@@ -124,9 +124,7 @@ namespace BlackBoxWiki
         {
             msg.ReplyText = $"{Topic.Title},{msg.ReplyText}".Trim(',');
 
-            List<string> list = msg.ReplyText.Split(',').ToList();
-
-            SetMeta(msg, list);
+            SetMeta(msg, msg.ReplyText.Split(',').ToList());
         }
 
         internal static void SetMeta(WikiMessage msg, List<string> metaList)
@@ -194,11 +192,17 @@ namespace BlackBoxWiki
             }
         }
 
+        static WikiMessage message;
+
+        static string function;
+
+        static string content;
+
         static void RunErrorMessage()
         {
-            string content = "[Failed]-> Setup Incomplete";
+            content = "[Failed]-> Setup Incomplete";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.SystemMsg;
@@ -214,9 +218,9 @@ namespace BlackBoxWiki
 
         static void GetFile()
         {
-            string content = "Adding File? or Link?";
+            content = "Adding File? or Link?";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.UploadTopic;
@@ -232,9 +236,9 @@ namespace BlackBoxWiki
 
         static void GetLink()
         {
-            string content = $"Enter URL (web address) for {Topic.Title}";
+            content = $"Enter URL (web address) for {Topic.Title}";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.UploadLink;
@@ -250,11 +254,11 @@ namespace BlackBoxWiki
 
         static void GetMeta()
         {
-            string function = IsEditMode ? "Edit" : "Add";
+            function = IsEditMode ? "Edit" : "Add";
 
-            string content = $"{function} connected topics, separated by commas (topic1, topic2)";
+            content = $"{function} connected topics, separated by commas (topic1, topic2)";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.AddMeta;
@@ -271,11 +275,11 @@ namespace BlackBoxWiki
 
         static void GetInformation()
         {
-            string function = IsEditMode ? "Edit" : "Add";
+            function = IsEditMode ? "Edit" : "Add";
 
-            string content = $"{function} description for {Topic.GetCleanFileName(true)}";
+            content = $"{function} description for {Topic.GetCleanFileName(true)}";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.AddInfo;
@@ -292,11 +296,11 @@ namespace BlackBoxWiki
 
         static void SubmitTopic()
         {
-            string function = IsEditMode ? "[Edit]" : string.Empty;
+            function = IsEditMode ? "[Edit]" : string.Empty;
 
-            string content = $"Submit {Topic.Title} {function} : {Topic.GetCleanFileName(true)}";
+            content = $"Submit {Topic.Title} {function} : {Topic.GetCleanFileName(true)}";
 
-            WikiMessage message = WikiHelper.WikiForm.WikiMsg;
+            message = WikiHelper.WikiForm.WikiMsg;
 
             message.Message = content;
             message.Reply = WikiMessage.ReplyType.SubmitTopic;
@@ -314,100 +318,133 @@ namespace BlackBoxWiki
         static int ScrapeLetter => WikiDir.ScrapeLetter;
         static int ScrapeLevel => WikiDir.ScrapeFrequency;
 
-        static string[] UpdateComonWordResource()
+        static string[] UpdateComonWordResource(string path)
         {
-            return Resources.CommonWords.Split('\n');
+            if (File.Exists(path))
+            {
+                return File.ReadAllLines(path);
+            }
+            else
+            {
+                return Resources.CommonWords.Split('\n');
+            }
         }
+
+        static RichTextBox richTextBox;
+
+        static Dictionary<string, int> duplicateWords;
+
+        static List<string> cleanEntries;
+
+        static List<string> enteries;
+
+        static StringBuilder sb;
+
+        static bool isText;
+
+        static string cleanText;
+
+        static List<string> commonWords;
+
+        static int charCounter;
 
         static string ScrapeMetaData(WikiTopic topic, string path)
         {
-            bool isText = topic.FileType.ToUpper() == "TXT";
+            isText = topic.FileType.ToUpper() == "TXT";
 
             if (!isText)
                 isText = topic.FileType.ToUpper() == "RTF";
 
             if (ScrapeFile && isText)
             {
-                Dictionary<string, int> DuplicateWords = new Dictionary<string, int>();
+                duplicateWords = new Dictionary<string, int>();
 
-                List<string> CleanEntries = new List<string>();
+                cleanEntries = new List<string>();
 
-                List<string> Enteries = new List<string>();
+                enteries = new List<string>();
 
                 if (topic.FileType.ToUpper() == "TXT" && File.Exists(path))
                 {
-                    CleanEntries = File.ReadAllText(path).Replace('\n', ' ').Replace('\r', ' ').Split(' ').ToList();
+                    cleanText = File.ReadAllText(path).Replace('\n', ' ').Replace('\r', ' ');
+
+                    cleanEntries = cleanText.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 }
                 else
                 {
-                    RichTextBox richTextBox = new RichTextBox();
+                    richTextBox = new RichTextBox();
 
-                    richTextBox.LoadFile(path, RichTextBoxStreamType.RichText);
+                    richTextBox.LoadFile(path);
 
-                    string cleanText = richTextBox.Text.Replace('\n', ' ').Replace('\r', ' ');
+                    cleanText = richTextBox.Text.Replace('\n', ' ').Replace('\r', ' ');
 
-                    CleanEntries = cleanText.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    cleanEntries = cleanText.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
                 }
 
-                if (CleanEntries != null)
+                if (cleanEntries != null)
                 {
-                    List<string> commonWords = LoadCommonWords(WikiDir);
+                    commonWords = LoadCommonWords(WikiDir);
 
-                    foreach (string word in CleanEntries)
+                    foreach (string word in cleanEntries)
                     {
                         if (word.Length > ScrapeLetter)
                         {
-                            if (!Enteries.Contains(word))
+                            if (!enteries.Contains(word))
                             {
                                 if (word.All(char.IsLetter))
                                 {
                                     if (!commonWords.Contains(word.ToUpper()))
                                     {
                                         {
-                                            Enteries.Add(word);
+                                            enteries.Add(word);
                                         }
                                     }
                                 }
                             }
                             else
                             {
-                                if (DuplicateWords.ContainsKey(word.ToUpper()))
+                                if (duplicateWords.ContainsKey(word.ToUpper()))
                                 {
-                                    DuplicateWords[word.ToUpper()]++;
+                                    duplicateWords[word.ToUpper()]++;
                                 }
                                 else
                                 {
-                                    DuplicateWords.Add(word.ToUpper(), 1);
+                                    duplicateWords.Add(word.ToUpper(), 1);
                                 }
                             }
                         }
                     }
 
-                    if (DuplicateWords.Count > 0)
+                    if (duplicateWords.Count > 0)
                     {
-                        Enteries = new List<string>();
+                        enteries = new List<string>();
 
-                        foreach (var duplicate in DuplicateWords)
+                        foreach (var duplicate in duplicateWords)
                         {
                             if (duplicate.Value > ScrapeLevel)
                             {
-                                Enteries.Add(duplicate.Key);
+                                enteries.Add(duplicate.Key);
                             }
                         }
                     }
                 }
 
-                StringBuilder sb = new StringBuilder();
+                sb = new StringBuilder();
 
-                int charCounter = 0;
+                charCounter = 0;
 
-                foreach (string entry in Enteries)
+                foreach (string entry in enteries)
                 {
                     charCounter += entry.Length;
 
                     if (charCounter < 950)
                         sb.Append($"{entry}, ");
                 }
+
+                duplicateWords.Clear();
+
+                cleanEntries.Clear();
+
+                enteries.Clear();
 
                 return sb.ToString().TrimEnd();
             }
@@ -417,55 +454,48 @@ namespace BlackBoxWiki
             }
         }
 
+        static List<string> commonWordList;
+
+        static string commonPath;
+
+        static string[] excludedWordList;
+
         static List<string> LoadCommonWords(WikiDirectory wikiDirectory)
         {
-            List<string> commonWords = new List<string>();
+            commonWordList = new List<string>();
 
-            string[] excludedWordList;
+            commonPath = $@"{wikiDirectory.MyWikiFolder}\CommonWords.txt";
 
-            string path = $@"{wikiDirectory.MyWikiFolder}\CommonWords.txt";
-
-            if (File.Exists(path))
-            {
-                excludedWordList = File.ReadAllLines(path);
-            }
-            else
-            {
-                if (UpdateComonWordResource() != null)
-                    excludedWordList = UpdateComonWordResource();
-                else
-                    excludedWordList = new string[0];
-            }
+            excludedWordList = UpdateComonWordResource(commonPath);
 
             foreach (string word in excludedWordList)
             {
-                if (word.Contains('='))
+                string cleanedWord = word;
+
+                if (cleanedWord.Contains('\n'))
+                    cleanedWord = word.Replace("\n", "");
+
+                if (cleanedWord.Contains('\r'))
+                    cleanedWord = cleanedWord.Replace("\r", "");
+
+                if (cleanedWord.Length > 0)
                 {
-                    string getWord = word.Split('=').Last();
-
-                    if (getWord.Contains('\n'))
-                        getWord = getWord.Replace("\n", "");
-
-                    if (getWord.Contains('\r'))
-                        getWord = getWord.Replace("\r", "");
-
-                    if (getWord.Length > 0)
-                    {
-                        commonWords.Add(getWord.ToUpper());
-                    }
+                    commonWordList.Add(cleanedWord.ToUpper());
                 }
             }
 
-            return commonWords;
+            return commonWordList;
         }
+
+        static WikiTopic getTopic;
 
         internal static WikiTopic GetTopic(int id)
         {
-            WikiTopic topic = new WikiTopic(id);
+            getTopic = new WikiTopic(id);
 
-            if (topic.ID != -1)
+            if (getTopic.ID != -1)
             {
-                return topic;
+                return getTopic;
             }
             else
             {
