@@ -650,6 +650,11 @@ namespace BlackBoxWiki
             toolStripLetterLevel.Image = WikiHelper.GetLevelImage(toolStripScrape, true, WikiDir.ScrapeLetter);
         }
 
+        void ScrapeLetter_Click(object sender, EventArgs e)
+        {
+            toolStripLetterLevel.ShowDropDown();
+        }
+
         void FreqLevel_Click(object sender, EventArgs e)
         {
             WikiDir.ScrapeFrequency = Convert.ToInt32(sender.ToString());
@@ -657,6 +662,11 @@ namespace BlackBoxWiki
             Settings.Default.ScrapeFreq = Convert.ToInt32(sender.ToString());
 
             toolStripFreqLevel.Image = WikiHelper.GetLevelImage(toolStripScrape, false, WikiDir.ScrapeFrequency);
+        }
+
+        void ScrapeFrequency_Click(object sender, EventArgs e)
+        {
+            toolStripFreqLevel.ShowDropDown();
         }
 
         private void Manual_Click(object sender, EventArgs e)
@@ -1097,9 +1107,11 @@ namespace BlackBoxWiki
 
             WikiHelper.SaveSettings();
 
-            wikiSystemWatcher.Dispose();
+            if (wikiSystemWatcher != null)
+                wikiSystemWatcher.Dispose();
 
-            WikiCntrl.DisposeHandle();
+            if (WikiCntrl != null)
+                WikiCntrl.DisposeHandle();
 
             if (!IsForcedClosed)
                 WikiDir.StopWiki();
