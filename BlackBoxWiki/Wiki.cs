@@ -365,7 +365,7 @@ namespace BlackBoxWiki
 
                         if (WikiCntrl != null)
                         {
-                            UpdateControlType(WikiCntrl.Handle);
+                            UpdateControlType(WikiCntrl);
 
                             SearchScreen(WikiCntrl.Handle);
 
@@ -421,7 +421,7 @@ namespace BlackBoxWiki
 
                 if (link == e.LinkText)
                 {
-                    SendToScreen(ControlManager.WebControl(link).Handle);
+                    SendToScreen(ControlManager.WebControl(link));
                 }
                 else
                 {
@@ -473,7 +473,7 @@ namespace BlackBoxWiki
             return wikiMediaPlayer;
         }
 
-        void CloseMediaPlayer()
+        internal void CloseMediaPlayer()
         {
             wikiMediaPlayer.Ctlcontrols.stop();
 
@@ -484,12 +484,14 @@ namespace BlackBoxWiki
 
         internal void RunWebSearch(string source)
         {
-            WebView2 webView = ControlManager.WebControl(source).Handle as WebView2;
+            WikiControl control = ControlManager.WebControl(source);
 
-            SendToScreen(webView);
+            SendToScreen(control);
 
-            if (webView.Name.Equals("wikiWebView"))
+            if (control.FileType == FileTypes.Web)
             {
+                WebView2 webView = control.Handle as WebView2;
+
                 webView.SourceChanged += WebView_SourceChanged;
             }
 
@@ -659,22 +661,22 @@ namespace BlackBoxWiki
 
         private void Manual_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\WikiInfo.rtf", true, false).Handle);
+            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\WikiInfo.rtf", true, false));
         }
 
         void Contact_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\ContactInfo.rtf", true, false).Handle);
+            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\ContactInfo.rtf", true, false));
         }
 
         void YouTube_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.WebControl(@"https://www.youtube.com/channel/UCuu_5wegzY9sgZiOFVl68KA").Handle);
+            SendToScreen(ControlManager.WebControl(@"https://www.youtube.com/channel/UCuu_5wegzY9sgZiOFVl68KA"));
         }
 
         void Donate_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.WebControl(@"https://paypal.me/CalFyre?country.x=CA&locale.x=en_US").Handle);
+            SendToScreen(ControlManager.WebControl(@"https://paypal.me/CalFyre?country.x=CA&locale.x=en_US"));
         }
 
         void ClearAllText()
@@ -684,33 +686,28 @@ namespace BlackBoxWiki
             toolStripDirectory.Items.Clear();
         }
 
-        void UpdateControlType(Control control)
+        void UpdateControlType(WikiControl control)
         {
-            if (control.Name.Equals("wikiRichTextBox"))
+            if (control.FileType == FileTypes.Rich)
             {
-                RichTextBox richTextBox = control as RichTextBox;
+                RichTextBox richTextBox = control.Handle as RichTextBox;
 
                 richTextBox.LinkClicked += RichTextBox_LinkClicked;
             }
 
-            if (control.Name.Equals("wikiWebView"))
+            if (control.FileType == FileTypes.Web)
             {
-                WebView2 webView = control as WebView2;
+                WebView2 webView = control.Handle as WebView2;
 
                 webView.SourceChanged += WebView_SourceChanged;
             }
         }
 
-        internal void SendToScreen(Control control)
+        internal void SendToScreen(WikiControl control)
         {
             CloseScreens();
 
-            WikiCntrl = new WikiControl
-            {
-                Handle = control
-            };
-
-            WikiCntrl.SetUpType();
+            WikiCntrl = control;
 
             UpdateControlType(control);
 
@@ -718,13 +715,13 @@ namespace BlackBoxWiki
             {
                 UpdateScreenSize(false);
 
-                SearchScreen(control);
+                SearchScreen(control.Handle);
             }
             else
             {
                 UpdateScreenSize(true);
 
-                FullScreen(control);
+                FullScreen(control.Handle);
             }
         }
 
@@ -735,7 +732,7 @@ namespace BlackBoxWiki
             CloseSearchScreen();
         }
 
-        List<Control> FullScreenControl = new List<Control>();
+        readonly List<Control> FullScreenControl = new List<Control>();
 
         void FullScreen(Control control)
         {
@@ -757,11 +754,11 @@ namespace BlackBoxWiki
             {
                 Controls.Remove(FullScreenControl[0]);
 
-                ClearResources(ref FullScreenControl);
+                ClearResources(FullScreenControl);
             }
         }
 
-        List<Control> SearchScreenControl = new List<Control>();
+        readonly List<Control> SearchScreenControl = new List<Control>();
 
         void SearchScreen(Control control)
         {
@@ -787,32 +784,70 @@ namespace BlackBoxWiki
 
                 viewerPanel.Controls.Remove(SearchScreenControl[0]);
 
-                ClearResources(ref SearchScreenControl);
+                ClearResources(SearchScreenControl);
             }
         }
 
-        void ClearResources(ref List<Control> listToClean)
+        void ClearResources(List<Control> listToClean)
         {
             if (listToClean != null && listToClean.Count > 0)
             {
-                Control oldControl = listToClean[0];
-
                 listToClean.Clear();
 
-                if (oldControl != null)
-                {
-                    if (oldControl.Name.Equals(wikiMediaPlayer.Name))
-                    {
-                        CloseMediaPlayer();
-                    }
-                    else
-                    {
-                        oldControl.Dispose();
-                    }
-                }
+                if (WikiCntrl != null)
+                    WikiCntrl.DisposeHandle();
+            }
+        }
 
-                if (WikiCntrl.ImageRes != null)
-                    WikiCntrl.ImageRes.Dispose();
+        internal void UpdateScreenSize(bool isFullSize)
+        {
+            if (!isFullSize)
+            {
+                FullSize = false;
+
+                toolStripFullScreen.Image = Resources.FullScreenBox;
+            }
+            else
+            {
+                FullSize = true;
+
+                toolStripFullScreen.Image = Resources.FullScreenFill;
+            }
+        }
+
+        void ScreenSize_Click(object sender, EventArgs e)
+        {
+            if (FullSize && FullScreenControl.Count > 0)
+            {
+                FullSize = false;
+
+                toolStripFullScreen.Image = Resources.FullScreenBox;
+
+                Control control = FullScreenControl[0];
+
+                FullScreenControl.Clear();
+
+                viewerPanel.Visible = true;
+
+                CloseScreens();
+
+                SearchScreen(control);
+            }
+            else if (!FullSize && SearchScreenControl.Count > 0)
+            {
+                FullSize = true;
+
+                toolStripFullScreen.Image = Resources.FullScreenFill;
+
+                Control control = SearchScreenControl[0];
+
+                SearchScreenControl.Clear();
+
+                viewerPanel.Visible = false;
+
+                CloseScreens();
+
+                FullScreen(control);
             }
         }
 
@@ -890,55 +925,16 @@ namespace BlackBoxWiki
             Controls.Remove(messagePanel);
         }
 
-        internal void UpdateScreenSize(bool isFullSize)
+        void ReplyEntry_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!isFullSize)
+            if (WikiMsg != null)
             {
-                FullSize = false;
+                bool keyRestriction = WikiHelper.IsValidKeyPress(e, WikiMsg.Reply == WikiMessage.ReplyType.AddMeta);
 
-                toolStripFullScreen.Image = Resources.FullScreenBox;
-            }
-            else
-            {
-                FullSize = true;
-
-                toolStripFullScreen.Image = Resources.FullScreenFill;
-            }
-        }
-
-        void ScreenSize_Click(object sender, EventArgs e)
-        {
-            if (FullSize && FullScreenControl.Count > 0)
-            {
-                FullSize = false;
-
-                toolStripFullScreen.Image = Resources.FullScreenBox;
-
-                Control control = FullScreenControl[0];
-
-                FullScreenControl.Clear();
-
-                viewerPanel.Visible = true;
-
-                CloseScreens();
-
-                SearchScreen(control);
-            }
-            else if (!FullSize && SearchScreenControl.Count > 0)
-            {
-                FullSize = true;
-
-                toolStripFullScreen.Image = Resources.FullScreenFill;
-
-                Control control = SearchScreenControl[0];
-
-                SearchScreenControl.Clear();
-
-                viewerPanel.Visible = false;
-
-                CloseScreens();
-
-                FullScreen(control);
+                if (keyRestriction)
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -964,63 +960,24 @@ namespace BlackBoxWiki
             }
         }
 
-        void ReplyEntry_KeyPress(object sender, KeyPressEventArgs e)
+        private void InfoBox_Click(object sender, EventArgs e)
         {
-            if (WikiMsg != null)
+            if (SingleClickControl)
             {
-                bool keyRestriction = WikiHelper.IsValidKeyPress(e, WikiMsg.Reply == WikiMessage.ReplyType.AddMeta);
+                SingleClickControl = false;
 
-                if (keyRestriction)
-                {
-                    e.Handled = true;
-                }
+                InfoTextBox.BackColor = Color.FromArgb(255, 64, 64, 64);
+
+                InfoTextBox.ForeColor = Color.WhiteSmoke;
             }
-        }
-
-        void AITimer_Tick(object sender, EventArgs e)
-        {
-            if (!IsLocked && !WikiHelper.MessageIsOpen)
+            else
             {
-                UpdateToolInfo(false, WikiHelper.Tick());
+                SingleClickControl = true;
 
-                if (toolStripProgressBar.Value > 0 && toolStripProgressBar.Value < 100)
-                {
-                    UpdateProgress(100);
-                }
-                else
-                {
-                    UpdateProgress(0);
-                }
+                InfoTextBox.BackColor = Color.WhiteSmoke;
 
-                replyTextBox.Clear();
+                InfoTextBox.ForeColor = Color.FromArgb(255, 64, 64, 64);
             }
-        }
-
-        bool IsForcedClosed { get; set; } = false;
-
-        void Wiki_Closing(object sender, FormClosingEventArgs e)
-        {
-            WikiUtility.SaveAll();
-
-            WikiHelper.SaveSettings();
-
-            wikiSystemWatcher.Dispose();
-
-            if (!IsForcedClosed)
-                WikiDir.StopWiki();
-
-            FileWorker.LogEvent($@"STOPPED -> [{Application.ProductName.ToUpper()}]=> Closing()");
-
-            FileWorker.SaveLog();
-        }
-
-        void WikiRunning_Delete(object sender, FileSystemEventArgs e)
-        {
-            IsForcedClosed = true;
-
-            FileWorker.LogEvent($@"STOPPED -> [File Deleted]=> Forced Close()");
-
-            Close();
         }
 
         void WallPaper_Click(object sender, EventArgs e)
@@ -1104,24 +1061,50 @@ namespace BlackBoxWiki
             toolStripColor.BackColor = color;
         }
 
-        private void InfoBox_Click(object sender, EventArgs e)
+        void AITimer_Tick(object sender, EventArgs e)
         {
-            if (SingleClickControl)
+            if (!IsLocked && !WikiHelper.MessageIsOpen)
             {
-                SingleClickControl = false;
+                UpdateToolInfo(false, WikiHelper.Tick());
 
-                InfoTextBox.BackColor = Color.FromArgb(255, 64, 64, 64);
+                if (toolStripProgressBar.Value > 0 && toolStripProgressBar.Value < 100)
+                {
+                    UpdateProgress(100);
+                }
+                else
+                {
+                    UpdateProgress(0);
+                }
 
-                InfoTextBox.ForeColor = Color.WhiteSmoke;
+                replyTextBox.Clear();
             }
-            else
-            {
-                SingleClickControl = true;
+        }
 
-                InfoTextBox.BackColor = Color.WhiteSmoke;
+        bool IsForcedClosed { get; set; } = false;
 
-                InfoTextBox.ForeColor = Color.FromArgb(255, 64, 64, 64);
-            }
+        void WikiRunning_Delete(object sender, FileSystemEventArgs e)
+        {
+            IsForcedClosed = true;
+
+            FileWorker.LogEvent($@"STOPPED -> [File Deleted]=> Forced Close()");
+
+            Close();
+        }
+
+        void Wiki_Closing(object sender, FormClosingEventArgs e)
+        {
+            WikiUtility.SaveAll();
+
+            WikiHelper.SaveSettings();
+
+            wikiSystemWatcher.Dispose();
+
+            if (!IsForcedClosed)
+                WikiDir.StopWiki();
+
+            FileWorker.LogEvent($@"STOPPED -> [{Application.ProductName.ToUpper()}]=> Closing()");
+
+            FileWorker.SaveLog();
         }
     }
 }

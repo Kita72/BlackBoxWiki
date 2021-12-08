@@ -9,39 +9,18 @@ namespace BlackBoxWiki
 {
     internal class WikiControl
     {
-        public Control Handle { get; set; }
+        internal Control Handle { get; set; }
 
-        public FileTypes FileType { get; set; }
+        internal FileTypes FileType { get; set; }
 
-        public Image ImageRes { get; set; }
+        internal Image ImageRes { get; set; }
 
-        public WikiControl()
+        internal WikiControl()
         {
             //Add to prevsearch?
         }
 
-        internal void SetUpType()
-        {
-            if (Handle.Name == "wikiTextBox")
-                FileType = FileTypes.Text;
-            if (Handle.Name == "wikiRichTextBox")
-                FileType = FileTypes.Rich;
-            if (Handle.Name == "wikiPictureBox")
-                FileType = FileTypes.Image;
-            if (Handle.Name == "wikiMediaPlayer")
-                FileType = FileTypes.Video;
-            if (Handle.Name == "wikiWebView")
-                FileType = FileTypes.Web;
-
-            if (FileType == FileTypes.Image)
-            {
-                PictureBox handle = Handle as PictureBox;
-
-                ImageRes = handle.Image;
-            }
-        }
-
-        ~WikiControl()
+        internal void DisposeHandle()
         {
             if (ImageRes != null)
             {
@@ -51,6 +30,10 @@ namespace BlackBoxWiki
             if (FileType != FileTypes.Video)
             {
                 Handle.Dispose();
+            }
+            else
+            {
+                WikiHelper.WikiForm.CloseMediaPlayer();
             }
         }
     }

@@ -119,7 +119,7 @@ namespace BlackBoxWiki
                         {
                             WikiForm.MessageOK_Click("Export", EventArgs.Empty);
 
-                            WikiForm.SendToScreen(ControlManager.WebControl(@"https://www.filehosting.org/").Handle);
+                            WikiForm.SendToScreen(ControlManager.WebControl(@"https://www.filehosting.org/"));
                         }
 
                         break;
