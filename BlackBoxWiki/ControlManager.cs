@@ -7,16 +7,61 @@ using System.Windows.Forms;
 
 namespace BlackBoxWiki
 {
+    internal class WikiControl
+    {
+        public Control Handle { get; set; }
+
+        public FileTypes FileType { get; set; }
+
+        public Image ImageRes { get; set; }
+
+        public WikiControl()
+        {
+            //Add to prevsearch?
+        }
+
+        internal void SetUpType()
+        {
+            if (Handle.Name == "wikiTextBox")
+                FileType = FileTypes.Text;
+            if (Handle.Name == "wikiRichTextBox")
+                FileType = FileTypes.Rich;
+            if (Handle.Name == "wikiPictureBox")
+                FileType = FileTypes.Image;
+            if (Handle.Name == "wikiMediaPlayer")
+                FileType = FileTypes.Video;
+            if (Handle.Name == "wikiWebView")
+                FileType = FileTypes.Web;
+
+            if (FileType == FileTypes.Image)
+            {
+                PictureBox handle = Handle as PictureBox;
+
+                ImageRes = handle.Image;
+            }
+        }
+
+        ~WikiControl()
+        {
+            if (ImageRes != null)
+            {
+                ImageRes.Dispose();
+            }
+
+            if (FileType != FileTypes.Video)
+            {
+                Handle.Dispose();
+            }
+        }
+    }
+
     internal static class ControlManager
     {
-        
-        internal static Image ResourceImage;
-
-        internal static Control WikiControl { get; set; }
-
         internal static WikiDirectory WikiDir => WikiHelper.WikiDir;
 
-        internal static TextBox TextControl(string source)
+        static WikiControl wikiControl;
+
+        internal static WikiControl TextControl(string source)
         {
             TextBox textControl = new TextBox
             {
@@ -30,14 +75,18 @@ namespace BlackBoxWiki
                 Text = WikiDir.ReadText(source)
             };
 
-            WikiControl = textControl;
+            wikiControl = new WikiControl
+            {
+                FileType = FileTypes.Text,
+                Handle = textControl
+            };
 
             FileWorker.LogEvent("CREATE -> [Control]=> Text");
 
-            return textControl;
+            return wikiControl;
         }
 
-        internal static RichTextBox RichControl(string source, bool isRich, bool overrideload)
+        internal static WikiControl RichControl(string source, bool isRich, bool overrideload)
         {
             RichTextBox richControl = new RichTextBox
             {
@@ -53,7 +102,7 @@ namespace BlackBoxWiki
 
             if (overrideload)
             {
-                richControl.Rtf = source;
+                richControl.Text = source;
             }
             else
             {
@@ -70,64 +119,77 @@ namespace BlackBoxWiki
                 }
             }
 
-            WikiControl = richControl;
+            wikiControl = new WikiControl
+            {
+                FileType = FileTypes.Rich,
+                Handle = richControl
+            };
 
             FileWorker.LogEvent("CREATE -> [Control]=> RichText");
 
-            return richControl;
+            return wikiControl;
         }
 
-        internal static PictureBox ImageControl(string source)
+        internal static WikiControl ImageControl(string source)
         {
-            if (File.Exists(source))
-                ResourceImage = Image.FromFile(source);
-
             PictureBox imageControl = new PictureBox
             {
                 Name = "wikiPictureBox",
                 Dock = DockStyle.Fill,
-                Image = ResourceImage,
+                Image = File.Exists(source) ? Image.FromFile(source) : null,
                 SizeMode = PictureBoxSizeMode.CenterImage
             };
 
-            WikiControl = imageControl;
+            wikiControl = new WikiControl
+            {
+                FileType = FileTypes.Image,
+                Handle = imageControl,
+                ImageRes = File.Exists(source) ? imageControl.Image : null
+            };
 
             FileWorker.LogEvent("CREATE -> [Control]=> PictureBox(string)");
 
-            return imageControl;
+            return wikiControl;
         }
 
-        internal static PictureBox ImageControl(Image source)
+        internal static WikiControl ImageControl(Image source)
         {
-            ResourceImage = source;
-
             PictureBox imageControl = new PictureBox
             {
                 Name = "wikiPictureBox",
                 Dock = DockStyle.Fill,
-                Image = ResourceImage,
+                Image = source,
                 SizeMode = PictureBoxSizeMode.CenterImage
             };
 
-            WikiControl = imageControl;
+            wikiControl = new WikiControl
+            {
+                FileType = FileTypes.Image,
+                Handle = imageControl,
+                ImageRes = source
+            };
 
             FileWorker.LogEvent("CREATE -> [Control]=> PictureBox(image)");
 
-            return imageControl;
+            return wikiControl;
         }
 
-        internal static Control MediaControl(string source)
+        internal static WikiControl MediaControl(string source)
         {
             Control mediaControl = WikiHelper.WikiForm.GetMediaHandle(source);
 
-            WikiControl = mediaControl;
+            wikiControl = new WikiControl
+            {
+                FileType = FileTypes.Video,
+                Handle = mediaControl
+            };
 
             FileWorker.LogEvent("CREATE -> [Control]=> MediaPlayer");
 
-            return mediaControl;
+            return wikiControl;
         }
 
-        internal static WebView2 WebControl(string source)
+        internal static WikiControl WebControl(string source)
         {
             try
             {
@@ -138,11 +200,15 @@ namespace BlackBoxWiki
                     Source = new Uri(source)
                 };
 
-                WikiControl = webControl;
+                wikiControl = new WikiControl
+                {
+                    FileType = FileTypes.Web,
+                    Handle = webControl
+                };
 
                 FileWorker.LogEvent("CREATE -> [Control]=> WebBrowser");
 
-                return webControl;
+                return wikiControl;
             }
             catch
             {

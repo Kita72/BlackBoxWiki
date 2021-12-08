@@ -1,8 +1,6 @@
 ﻿using BlackBoxWikiLib;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace BlackBoxWiki
 {
@@ -44,7 +42,7 @@ namespace BlackBoxWiki
                 return FileTypes.Unknown;
         }
 
-        internal static Control GetControl(WikiTopic topic)
+        internal static WikiControl GetControl(WikiTopic topic)
         {
             if (topic != null)
             {
@@ -54,18 +52,13 @@ namespace BlackBoxWiki
             return null;
         }
 
-        static Control ControlPicker(WikiTopic topic)
+        static WikiControl ControlPicker(WikiTopic topic)
         {
-            if (ControlManager.ResourceImage != null)
-            {
-                ControlManager.ResourceImage.Dispose();
-            }
-
             FileType = GetFileType(topic.FileType);
 
             FileWorker.LogEvent($"RUN -> [{FileType}]=> Process File");
 
-            Control control = null;
+            WikiControl control = null;
 
             switch(FileType)
             {

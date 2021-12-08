@@ -632,7 +632,7 @@
             // 
             // viewerPanel
             // 
-            this.viewerPanel.BackColor = System.Drawing.Color.Gray;
+            this.viewerPanel.BackColor = System.Drawing.Color.White;
             this.viewerPanel.ColumnCount = 2;
             this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.5981F));
             this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.4019F));

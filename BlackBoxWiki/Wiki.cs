@@ -18,15 +18,13 @@ namespace BlackBoxWiki
 
         bool FullSize { get; set; } = false;
 
-        bool IsWeb { get; set; } = false;
-
         bool IsLocked { get; set; } = false;
 
         bool SingleClickControl { get; set; } = true;
 
         int OldValue { get; set; } = 0;
 
-        Control WikiControl { get; set; }
+        WikiControl WikiCntrl { get; set; }
 
         internal WikiMessage WikiMsg { get; set; }
 
@@ -207,9 +205,9 @@ namespace BlackBoxWiki
 
         void BackArrow_Click(object sender, EventArgs e)
         {
-            if (IsWeb)
+            if (WikiCntrl.FileType == FileTypes.Web)
             {
-                WebView2 webControl = WikiControl as WebView2;
+                WebView2 webControl = WikiCntrl.Handle as WebView2;
 
                 if (webControl.CanGoBack)
                 {
@@ -230,9 +228,9 @@ namespace BlackBoxWiki
 
         void ForwardArrow_Click(object sender, EventArgs e)
         {
-            if (IsWeb)
+            if (WikiCntrl.FileType == FileTypes.Web)
             {
-                WebView2 webControl = WikiControl as WebView2;
+                WebView2 webControl = WikiCntrl.Handle as WebView2;
 
                 if (webControl.CanGoForward)
                 {
@@ -363,13 +361,13 @@ namespace BlackBoxWiki
                     {
                         CloseScreens();
 
-                        Control control = ProcessManager.GetControl(topic);
+                        WikiCntrl = ProcessManager.GetControl(topic);
 
-                        if (control != null)
+                        if (WikiCntrl != null)
                         {
-                            UpdateControlType(control);
+                            UpdateControlType(WikiCntrl.Handle);
 
-                            SearchScreen(control);
+                            SearchScreen(WikiCntrl.Handle);
 
                             InfoTextBox.Text = topic.Information;
 
@@ -423,7 +421,7 @@ namespace BlackBoxWiki
 
                 if (link == e.LinkText)
                 {
-                    SendToScreen(ControlManager.WebControl(link));
+                    SendToScreen(ControlManager.WebControl(link).Handle);
                 }
                 else
                 {
@@ -486,7 +484,7 @@ namespace BlackBoxWiki
 
         internal void RunWebSearch(string source)
         {
-            WebView2 webView = ControlManager.WebControl(source);
+            WebView2 webView = ControlManager.WebControl(source).Handle as WebView2;
 
             SendToScreen(webView);
 
@@ -661,22 +659,22 @@ namespace BlackBoxWiki
 
         private void Manual_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\WikiInfo.rtf", true, false));
+            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\WikiInfo.rtf", true, false).Handle);
         }
 
         void Contact_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\ContactInfo.rtf", true, false));
+            SendToScreen(ControlManager.RichControl($@"{WikiDir.MyWikiFolder}\ContactInfo.rtf", true, false).Handle);
         }
 
         void YouTube_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.WebControl(@"https://www.youtube.com/channel/UCuu_5wegzY9sgZiOFVl68KA"));
+            SendToScreen(ControlManager.WebControl(@"https://www.youtube.com/channel/UCuu_5wegzY9sgZiOFVl68KA").Handle);
         }
 
         void Donate_Click(object sender, EventArgs e)
         {
-            SendToScreen(ControlManager.WebControl(@"https://paypal.me/CalFyre?country.x=CA&locale.x=en_US"));
+            SendToScreen(ControlManager.WebControl(@"https://paypal.me/CalFyre?country.x=CA&locale.x=en_US").Handle);
         }
 
         void ClearAllText()
@@ -697,8 +695,6 @@ namespace BlackBoxWiki
 
             if (control.Name.Equals("wikiWebView"))
             {
-                IsWeb = true;
-
                 WebView2 webView = control as WebView2;
 
                 webView.SourceChanged += WebView_SourceChanged;
@@ -709,7 +705,12 @@ namespace BlackBoxWiki
         {
             CloseScreens();
 
-            WikiControl = control;
+            WikiCntrl = new WikiControl
+            {
+                Handle = control
+            };
+
+            WikiCntrl.SetUpType();
 
             UpdateControlType(control);
 
@@ -732,8 +733,6 @@ namespace BlackBoxWiki
             CloseFullScreen();
 
             CloseSearchScreen();
-
-            IsWeb = false;
         }
 
         List<Control> FullScreenControl = new List<Control>();
@@ -812,8 +811,8 @@ namespace BlackBoxWiki
                     }
                 }
 
-                if (ControlManager.ResourceImage != null)
-                    ControlManager.ResourceImage.Dispose();
+                if (WikiCntrl.ImageRes != null)
+                    WikiCntrl.ImageRes.Dispose();
             }
         }
 
