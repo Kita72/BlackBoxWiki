@@ -392,7 +392,7 @@
             // charOff
             // 
             this.charOff.Name = "charOff";
-            this.charOff.Size = new System.Drawing.Size(180, 22);
+            this.charOff.Size = new System.Drawing.Size(81, 22);
             this.charOff.Tag = "0";
             this.charOff.Text = "0";
             this.charOff.Click += new System.EventHandler(this.CharLevel_Click);
@@ -400,7 +400,7 @@
             // charOne
             // 
             this.charOne.Name = "charOne";
-            this.charOne.Size = new System.Drawing.Size(180, 22);
+            this.charOne.Size = new System.Drawing.Size(81, 22);
             this.charOne.Tag = "1";
             this.charOne.Text = "1";
             this.charOne.Click += new System.EventHandler(this.CharLevel_Click);
@@ -408,7 +408,7 @@
             // charTwo
             // 
             this.charTwo.Name = "charTwo";
-            this.charTwo.Size = new System.Drawing.Size(180, 22);
+            this.charTwo.Size = new System.Drawing.Size(81, 22);
             this.charTwo.Tag = "2";
             this.charTwo.Text = "2";
             this.charTwo.Click += new System.EventHandler(this.CharLevel_Click);
@@ -416,7 +416,7 @@
             // charThree
             // 
             this.charThree.Name = "charThree";
-            this.charThree.Size = new System.Drawing.Size(180, 22);
+            this.charThree.Size = new System.Drawing.Size(81, 22);
             this.charThree.Tag = "3";
             this.charThree.Text = "3";
             this.charThree.Click += new System.EventHandler(this.CharLevel_Click);
@@ -424,7 +424,7 @@
             // charFour
             // 
             this.charFour.Name = "charFour";
-            this.charFour.Size = new System.Drawing.Size(180, 22);
+            this.charFour.Size = new System.Drawing.Size(81, 22);
             this.charFour.Tag = "4";
             this.charFour.Text = "4";
             this.charFour.Click += new System.EventHandler(this.CharLevel_Click);
@@ -432,7 +432,7 @@
             // charFive
             // 
             this.charFive.Name = "charFive";
-            this.charFive.Size = new System.Drawing.Size(180, 22);
+            this.charFive.Size = new System.Drawing.Size(81, 22);
             this.charFive.Tag = "5";
             this.charFive.Text = "5";
             this.charFive.Click += new System.EventHandler(this.CharLevel_Click);
@@ -440,7 +440,7 @@
             // charSix
             // 
             this.charSix.Name = "charSix";
-            this.charSix.Size = new System.Drawing.Size(180, 22);
+            this.charSix.Size = new System.Drawing.Size(81, 22);
             this.charSix.Tag = "6";
             this.charSix.Text = "6";
             this.charSix.Click += new System.EventHandler(this.CharLevel_Click);
@@ -448,7 +448,7 @@
             // charSeven
             // 
             this.charSeven.Name = "charSeven";
-            this.charSeven.Size = new System.Drawing.Size(180, 22);
+            this.charSeven.Size = new System.Drawing.Size(81, 22);
             this.charSeven.Tag = "7";
             this.charSeven.Text = "7";
             this.charSeven.Click += new System.EventHandler(this.CharLevel_Click);
@@ -456,7 +456,7 @@
             // charEight
             // 
             this.charEight.Name = "charEight";
-            this.charEight.Size = new System.Drawing.Size(180, 22);
+            this.charEight.Size = new System.Drawing.Size(81, 22);
             this.charEight.Tag = "8";
             this.charEight.Text = "8";
             this.charEight.Click += new System.EventHandler(this.CharLevel_Click);
@@ -464,7 +464,7 @@
             // charNine
             // 
             this.charNine.Name = "charNine";
-            this.charNine.Size = new System.Drawing.Size(180, 22);
+            this.charNine.Size = new System.Drawing.Size(81, 22);
             this.charNine.Tag = "9";
             this.charNine.Text = "9";
             this.charNine.Click += new System.EventHandler(this.CharLevel_Click);
