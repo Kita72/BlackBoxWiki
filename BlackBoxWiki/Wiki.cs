@@ -1099,6 +1099,8 @@ namespace BlackBoxWiki
 
             wikiSystemWatcher.Dispose();
 
+            WikiCntrl.DisposeHandle();
+
             if (!IsForcedClosed)
                 WikiDir.StopWiki();
 
