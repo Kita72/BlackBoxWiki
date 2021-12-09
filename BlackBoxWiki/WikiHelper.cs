@@ -225,11 +225,8 @@ namespace BlackBoxWiki
             message.StartMessage();
         }
 
-        internal static Image GetLevelImage(ToolStripButton button, bool isLetter, int level)
+        internal static Image GetLevelImage(bool isLetter, int level)
         {
-            if (!WikiDir.ScrapeFile)
-                button.PerformClick();
-
             if (level == 1)
                 return Resources.Level1;
             if (level == 2)
@@ -360,6 +357,10 @@ namespace BlackBoxWiki
         internal static void SaveSettings()
         {
             Settings.Default.Save();
+        }
+        internal static void ResetSettings()
+        {
+            Settings.Default.Reset();
         }
     }
 }

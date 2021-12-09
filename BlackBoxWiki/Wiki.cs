@@ -285,7 +285,7 @@ namespace BlackBoxWiki
 
         void SearchButton_Click(object sender, EventArgs e)
         {
-            SearchManager.Search(toolStripSearchText.Text);
+            SearchManager.Search(WikiUtility.ConvertFromSys(toolStripSearchText.Text));
 
             FileWorker.LogEvent($"Search -> [{toolStripSearchText.Text}]=> Start");
         }
@@ -599,12 +599,16 @@ namespace BlackBoxWiki
 
             if (WikiDir.ScrapeLetter != Settings.Default.ScrapeLevel)
             {
-                toolStripLetterLevel.DropDownItems[WikiDir.ScrapeLetter].PerformClick();
+                toolStripLetterLevel.DropDownItems[Settings.Default.ScrapeLevel].PerformClick();
+
+                WikiDir.ScrapeLetter = Settings.Default.ScrapeLevel;
             }
 
             if (WikiDir.ScrapeFrequency != Settings.Default.ScrapeFreq)
             {
-                toolStripFreqLevel.DropDownItems[WikiDir.ScrapeFrequency].PerformClick();
+                toolStripFreqLevel.DropDownItems[Settings.Default.ScrapeFreq].PerformClick();
+
+                WikiDir.ScrapeFrequency = Settings.Default.ScrapeFreq;
             }
 
             if (ToolTipControl != Settings.Default.ToolTip)
@@ -668,7 +672,7 @@ namespace BlackBoxWiki
 
             Settings.Default.ScrapeLevel = Convert.ToInt32(sender.ToString());
 
-            toolStripLetterLevel.Image = WikiHelper.GetLevelImage(toolStripScrape, true, WikiDir.ScrapeLetter);
+            toolStripLetterLevel.Image = WikiHelper.GetLevelImage(true, WikiDir.ScrapeLetter);
         }
 
         void ScrapeLetter_Click(object sender, EventArgs e)
@@ -682,7 +686,7 @@ namespace BlackBoxWiki
 
             Settings.Default.ScrapeFreq = Convert.ToInt32(sender.ToString());
 
-            toolStripFreqLevel.Image = WikiHelper.GetLevelImage(toolStripScrape, false, WikiDir.ScrapeFrequency);
+            toolStripFreqLevel.Image = WikiHelper.GetLevelImage(false, WikiDir.ScrapeFrequency);
         }
 
         void ScrapeFrequency_Click(object sender, EventArgs e)
@@ -1203,15 +1207,15 @@ namespace BlackBoxWiki
 
         private void SettingsReset_Click(object sender, EventArgs e)
         {
-            string reply = WikiPrompt.ShowDialog("Reset -> User Settings?", "RESET", "OK", "Cancel");
+            string reply = WikiPrompt.ShowDialog("Reset -> User Settings?", "RESET", "Reset", "Cancel");
 
-            if (reply == "OK")
+            if (reply == "Reset")
             {
                 WikiHelper.RemoveWallpaper();
 
-                Settings.Default.Reset();
+                WikiHelper.ResetSettings();
 
-                Settings.Default.Save();
+                WikiHelper.SaveSettings();
 
                 UpdateToolSettings();
             }
