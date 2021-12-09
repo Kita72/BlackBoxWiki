@@ -115,7 +115,7 @@ namespace BlackBoxWiki
             {
                 toolStripTitle.Text = title;
 
-                int updatedWidth = 325 + (165 - toolStripTitle.Width);
+                int updatedWidth = 350 + (88 - toolStripTitle.Width);
 
                 toolStripSearchText.Size = new Size(updatedWidth, toolStripSearchText.Height);
 

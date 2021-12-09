@@ -77,7 +77,6 @@
             this.freqEight = new System.Windows.Forms.ToolStripMenuItem();
             this.freqNine = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBar6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBar8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDonate = new System.Windows.Forms.ToolStripButton();
             this.toolStripYouTube = new System.Windows.Forms.ToolStripButton();
             this.toolStripContact = new System.Windows.Forms.ToolStripButton();
@@ -135,22 +134,21 @@
             this.toolStripDirectory,
             this.toolStripBar3,
             this.toolStripAdd,
-            this.toolStripOpen,
-            this.toolStripEdit,
-            this.toolStripRemove,
-            this.toolStripBar4,
             this.toolStripCopy,
-            this.toolStripBar5,
+            this.toolStripBar4,
             this.toolStripScrape,
             this.toolStripLetterLevel,
             this.toolStripFreqLevel,
+            this.toolStripBar5,
+            this.toolStripOpen,
+            this.toolStripEdit,
+            this.toolStripRemove,
             this.toolStripBar6,
-            this.toolStripBar8,
             this.toolStripDonate,
             this.toolStripYouTube,
             this.toolStripContact,
-            this.toolStripBar7,
-            this.toolStripManual});
+            this.toolStripManual,
+            this.toolStripBar7});
             this.wikiToolStrip.Location = new System.Drawing.Point(0, 0);
             this.wikiToolStrip.Name = "wikiToolStrip";
             this.wikiToolStrip.Size = new System.Drawing.Size(1264, 32);
@@ -269,7 +267,7 @@
             this.toolStripSearchText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripSearchText.MaxLength = 250;
             this.toolStripSearchText.Name = "toolStripSearchText";
-            this.toolStripSearchText.Size = new System.Drawing.Size(325, 32);
+            this.toolStripSearchText.Size = new System.Drawing.Size(350, 32);
             this.toolStripSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.toolStripSearchText.Click += new System.EventHandler(this.SearchEntry_Click);
             // 
@@ -288,7 +286,7 @@
             this.toolStripDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.toolStripDirectory.Name = "toolStripDirectory";
-            this.toolStripDirectory.Size = new System.Drawing.Size(175, 32);
+            this.toolStripDirectory.Size = new System.Drawing.Size(224, 32);
             this.toolStripDirectory.SelectedIndexChanged += new System.EventHandler(this.SearchDirectory_IndexUpdated);
             this.toolStripDirectory.Click += new System.EventHandler(this.SearchDirectory_Click);
             // 
@@ -576,12 +574,6 @@
             this.toolStripBar6.Name = "toolStripBar6";
             this.toolStripBar6.Size = new System.Drawing.Size(6, 32);
             // 
-            // toolStripBar8
-            // 
-            this.toolStripBar8.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripBar8.Name = "toolStripBar8";
-            this.toolStripBar8.Size = new System.Drawing.Size(6, 32);
-            // 
             // toolStripDonate
             // 
             this.toolStripDonate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -636,8 +628,8 @@
             // 
             this.viewerPanel.BackColor = System.Drawing.Color.White;
             this.viewerPanel.ColumnCount = 2;
-            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.5981F));
-            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.4019F));
+            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.28165F));
+            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.71836F));
             this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.viewerPanel.Controls.Add(this.searchPanel, 1, 0);
             this.viewerPanel.Controls.Add(this.messagePanel, 0, 0);
@@ -661,13 +653,13 @@
             this.searchPanel.Controls.Add(this.SearchListBox, 0, 0);
             this.searchPanel.Controls.Add(this.InfoTextBox, 0, 1);
             this.searchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchPanel.Location = new System.Drawing.Point(905, 0);
+            this.searchPanel.Location = new System.Drawing.Point(901, 0);
             this.searchPanel.Margin = new System.Windows.Forms.Padding(0);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.RowCount = 2;
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.searchPanel.Size = new System.Drawing.Size(359, 671);
+            this.searchPanel.Size = new System.Drawing.Size(363, 671);
             this.searchPanel.TabIndex = 1;
             // 
             // SearchListBox
@@ -678,7 +670,7 @@
             this.SearchListBox.ItemHeight = 18;
             this.SearchListBox.Location = new System.Drawing.Point(3, 3);
             this.SearchListBox.Name = "SearchListBox";
-            this.SearchListBox.Size = new System.Drawing.Size(353, 530);
+            this.SearchListBox.Size = new System.Drawing.Size(357, 530);
             this.SearchListBox.TabIndex = 0;
             this.SearchListBox.Click += new System.EventHandler(this.SearchList_Click);
             this.SearchListBox.DoubleClick += new System.EventHandler(this.SearchList_DoubleClick);
@@ -693,7 +685,7 @@
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
             this.InfoTextBox.ReadOnly = true;
-            this.InfoTextBox.Size = new System.Drawing.Size(353, 129);
+            this.InfoTextBox.Size = new System.Drawing.Size(357, 129);
             this.InfoTextBox.TabIndex = 1;
             this.InfoTextBox.Click += new System.EventHandler(this.InfoBox_Click);
             // 
@@ -714,7 +706,7 @@
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.messagePanel.Size = new System.Drawing.Size(905, 671);
+            this.messagePanel.Size = new System.Drawing.Size(901, 671);
             this.messagePanel.TabIndex = 2;
             this.messagePanel.Visible = false;
             // 
@@ -723,10 +715,10 @@
             this.messageBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.messageBack.Controls.Add(this.messageGrid);
             this.messageBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageBack.Location = new System.Drawing.Point(226, 134);
+            this.messageBack.Location = new System.Drawing.Point(225, 134);
             this.messageBack.Margin = new System.Windows.Forms.Padding(0);
             this.messageBack.Name = "messageBack";
-            this.messageBack.Size = new System.Drawing.Size(452, 335);
+            this.messageBack.Size = new System.Drawing.Size(450, 335);
             this.messageBack.TabIndex = 0;
             // 
             // messageGrid
@@ -749,7 +741,7 @@
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.messageGrid.Size = new System.Drawing.Size(452, 335);
+            this.messageGrid.Size = new System.Drawing.Size(450, 335);
             this.messageGrid.TabIndex = 0;
             // 
             // replyTextBox
@@ -761,7 +753,7 @@
             this.replyTextBox.Location = new System.Drawing.Point(93, 103);
             this.replyTextBox.MaxLength = 1000;
             this.replyTextBox.Name = "replyTextBox";
-            this.replyTextBox.Size = new System.Drawing.Size(265, 26);
+            this.replyTextBox.Size = new System.Drawing.Size(264, 26);
             this.replyTextBox.TabIndex = 1;
             this.replyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.replyTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
@@ -777,7 +769,7 @@
             this.messageLabel.ForeColor = System.Drawing.Color.Gold;
             this.messageLabel.Location = new System.Drawing.Point(93, 67);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(265, 33);
+            this.messageLabel.Size = new System.Drawing.Size(264, 33);
             this.messageLabel.TabIndex = 0;
             this.messageLabel.Text = "Message";
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -792,7 +784,7 @@
             this.messageOK.ForeColor = System.Drawing.Color.Gold;
             this.messageOK.Location = new System.Drawing.Point(93, 203);
             this.messageOK.Name = "messageOK";
-            this.messageOK.Size = new System.Drawing.Size(265, 27);
+            this.messageOK.Size = new System.Drawing.Size(264, 27);
             this.messageOK.TabIndex = 2;
             this.messageOK.Text = "OK";
             this.messageOK.UseVisualStyleBackColor = false;
@@ -809,7 +801,7 @@
             this.messageCancel.ForeColor = System.Drawing.Color.Gold;
             this.messageCancel.Location = new System.Drawing.Point(93, 236);
             this.messageCancel.Name = "messageCancel";
-            this.messageCancel.Size = new System.Drawing.Size(265, 27);
+            this.messageCancel.Size = new System.Drawing.Size(264, 27);
             this.messageCancel.TabIndex = 3;
             this.messageCancel.Text = "Cancel";
             this.messageCancel.UseVisualStyleBackColor = false;
@@ -818,7 +810,7 @@
             // wikiMediaPlayer
             // 
             this.wikiMediaPlayer.Enabled = true;
-            this.wikiMediaPlayer.Location = new System.Drawing.Point(229, 472);
+            this.wikiMediaPlayer.Location = new System.Drawing.Point(228, 472);
             this.wikiMediaPlayer.Name = "wikiMediaPlayer";
             this.wikiMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wikiMediaPlayer.OcxState")));
             this.wikiMediaPlayer.Size = new System.Drawing.Size(75, 23);
@@ -883,7 +875,6 @@
             this.toolStripColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripColor.Name = "toolStripColor";
             this.toolStripColor.Size = new System.Drawing.Size(23, 23);
-            this.toolStripColor.Text = "•";
             this.toolStripColor.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripColor.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.toolStripColor.ToolTipText = "Color";
@@ -1000,7 +991,6 @@
         private System.Windows.Forms.ToolStripButton toolStripDonate;
         private System.Windows.Forms.ToolStripSeparator toolStripBar7;
         private System.Windows.Forms.ToolStripComboBox toolStripDirectory;
-        private System.Windows.Forms.ToolStripSeparator toolStripBar8;
         private System.Windows.Forms.TableLayoutPanel viewerPanel;
         private System.Windows.Forms.ToolStrip footerToolStrip;
         private System.Windows.Forms.ToolStripLabel toolStripInfo;
