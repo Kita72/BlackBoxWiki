@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyWikiIcon.ico" />
+    <None Include="Resources\Reset.png" />
     <None Include="Resources\ToolTipNew.png" />
     <None Include="Resources\ToolTipOld.png" />
     <None Include="Resources\WikiMerge.png" />

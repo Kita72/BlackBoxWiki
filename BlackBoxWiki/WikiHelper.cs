@@ -31,6 +31,21 @@ namespace BlackBoxWiki
             }
         }
 
+        static internal void RemoveWallpaper()
+        {
+            if (File.Exists($@"{WikiDir.AppFolder}\logo.jpg"))
+            {
+                WikiForm.BackgroundImage = Resources.MyWikiIcon;
+
+                WikiForm.BackgroundImageLayout = ImageLayout.Center;
+
+                if (WallPaper != null)
+                    WallPaper.Dispose();
+
+                File.Delete($@"{WikiDir.AppFolder}\logo.jpg");
+            }
+        }
+
         static internal void LoadToolSettings()
         {
             WikiForm.UpdateScreenSize(true);

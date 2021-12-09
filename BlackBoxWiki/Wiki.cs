@@ -611,6 +611,11 @@ namespace BlackBoxWiki
             {
                 toolStripTips.PerformClick();
             }
+
+            if (toolStripColor.BackColor != Settings.Default.ToolColor)
+            {
+                UpdateColorTheme(Settings.Default.ToolColor);
+            }
         }
 
         void CopyMove_Click(object sender, EventArgs e)
@@ -1086,7 +1091,6 @@ namespace BlackBoxWiki
             wikiToolStrip.BackColor = color;
             footerToolStrip.BackColor = color;
 
-            toolStripColor.ForeColor = color;
             toolStripColor.BackColor = color;
         }
 
@@ -1195,6 +1199,22 @@ namespace BlackBoxWiki
             FileWorker.LogEvent($@"STOPPED -> [{Application.ProductName.ToUpper()}]=> Closing()");
 
             FileWorker.SaveLog();
+        }
+
+        private void SettingsReset_Click(object sender, EventArgs e)
+        {
+            string reply = WikiPrompt.ShowDialog("Reset -> User Settings?", "RESET", "OK", "Cancel");
+
+            if (reply == "OK")
+            {
+                WikiHelper.RemoveWallpaper();
+
+                Settings.Default.Reset();
+
+                Settings.Default.Save();
+
+                UpdateToolSettings();
+            }
         }
     }
 }
