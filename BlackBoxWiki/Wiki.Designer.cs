@@ -47,12 +47,8 @@
             this.toolStripDirectory = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripBar3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripOpen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripRemove = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBar4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBar5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBar4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripScrape = new System.Windows.Forms.ToolStripButton();
             this.toolStripLetterLevel = new System.Windows.Forms.ToolStripSplitButton();
             this.charOff = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,12 +72,16 @@
             this.freqSeven = new System.Windows.Forms.ToolStripMenuItem();
             this.freqEight = new System.Windows.Forms.ToolStripMenuItem();
             this.freqNine = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripBar5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRemove = new System.Windows.Forms.ToolStripButton();
             this.toolStripBar6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDonate = new System.Windows.Forms.ToolStripButton();
             this.toolStripYouTube = new System.Windows.Forms.ToolStripButton();
             this.toolStripContact = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBar7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripManual = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBar7 = new System.Windows.Forms.ToolStripSeparator();
             this.viewerPanel = new System.Windows.Forms.TableLayoutPanel();
             this.searchPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SearchListBox = new System.Windows.Forms.ListBox();
@@ -177,6 +177,7 @@
             // 
             // toolStripBar1
             // 
+            this.toolStripBar1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar1.Name = "toolStripBar1";
             this.toolStripBar1.Size = new System.Drawing.Size(6, 32);
             // 
@@ -185,6 +186,7 @@
             this.toolStripNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripNew.Image = global::BlackBoxWiki.Properties.Resources.WikiNew;
             this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripNew.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripNew.Name = "toolStripNew";
             this.toolStripNew.Size = new System.Drawing.Size(23, 29);
             this.toolStripNew.Text = "New";
@@ -232,6 +234,7 @@
             // 
             // toolStripBar2
             // 
+            this.toolStripBar2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar2.Name = "toolStripBar2";
             this.toolStripBar2.Size = new System.Drawing.Size(6, 32);
             // 
@@ -292,6 +295,7 @@
             // 
             // toolStripBar3
             // 
+            this.toolStripBar3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar3.Name = "toolStripBar3";
             this.toolStripBar3.Size = new System.Drawing.Size(6, 32);
             // 
@@ -305,41 +309,6 @@
             this.toolStripAdd.Text = "Add";
             this.toolStripAdd.Click += new System.EventHandler(this.AddTopic_Click);
             // 
-            // toolStripOpen
-            // 
-            this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripOpen.Image = global::BlackBoxWiki.Properties.Resources.OpenFileNew;
-            this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripOpen.Name = "toolStripOpen";
-            this.toolStripOpen.Size = new System.Drawing.Size(23, 29);
-            this.toolStripOpen.Text = "Open";
-            this.toolStripOpen.Click += new System.EventHandler(this.OpenTopic_Click);
-            // 
-            // toolStripEdit
-            // 
-            this.toolStripEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripEdit.Image = global::BlackBoxWiki.Properties.Resources.EditFileNew;
-            this.toolStripEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripEdit.Name = "toolStripEdit";
-            this.toolStripEdit.Size = new System.Drawing.Size(23, 29);
-            this.toolStripEdit.Text = "Edit";
-            this.toolStripEdit.Click += new System.EventHandler(this.EditTopic_Click);
-            // 
-            // toolStripRemove
-            // 
-            this.toolStripRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripRemove.Image = global::BlackBoxWiki.Properties.Resources.RemoveFileNew;
-            this.toolStripRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripRemove.Name = "toolStripRemove";
-            this.toolStripRemove.Size = new System.Drawing.Size(23, 29);
-            this.toolStripRemove.Text = "Remove";
-            this.toolStripRemove.Click += new System.EventHandler(this.RemoveTopic_Click);
-            // 
-            // toolStripBar4
-            // 
-            this.toolStripBar4.Name = "toolStripBar4";
-            this.toolStripBar4.Size = new System.Drawing.Size(6, 32);
-            // 
             // toolStripCopy
             // 
             this.toolStripCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -350,10 +319,11 @@
             this.toolStripCopy.Text = "Copy File";
             this.toolStripCopy.Click += new System.EventHandler(this.CopyMove_Click);
             // 
-            // toolStripBar5
+            // toolStripBar4
             // 
-            this.toolStripBar5.Name = "toolStripBar5";
-            this.toolStripBar5.Size = new System.Drawing.Size(6, 32);
+            this.toolStripBar4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.toolStripBar4.Name = "toolStripBar4";
+            this.toolStripBar4.Size = new System.Drawing.Size(6, 32);
             // 
             // toolStripScrape
             // 
@@ -380,11 +350,13 @@
             this.charEight,
             this.charNine});
             this.toolStripLetterLevel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLetterLevel.ForeColor = System.Drawing.Color.Gold;
             this.toolStripLetterLevel.Image = global::BlackBoxWiki.Properties.Resources.LetterLevel;
             this.toolStripLetterLevel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripLetterLevel.Name = "toolStripLetterLevel";
             this.toolStripLetterLevel.Size = new System.Drawing.Size(32, 29);
-            this.toolStripLetterLevel.Text = "Letter Level";
+            this.toolStripLetterLevel.Text = "Letter Count";
+            this.toolStripLetterLevel.ToolTipText = "Letter Count";
             this.toolStripLetterLevel.ButtonClick += new System.EventHandler(this.ScrapeLetter_Click);
             // 
             // charOff
@@ -482,6 +454,7 @@
             this.freqEight,
             this.freqNine});
             this.toolStripFreqLevel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripFreqLevel.ForeColor = System.Drawing.Color.Gold;
             this.toolStripFreqLevel.Image = global::BlackBoxWiki.Properties.Resources.FreqLevel;
             this.toolStripFreqLevel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripFreqLevel.Name = "toolStripFreqLevel";
@@ -569,8 +542,46 @@
             this.freqNine.Text = "9";
             this.freqNine.Click += new System.EventHandler(this.FreqLevel_Click);
             // 
+            // toolStripBar5
+            // 
+            this.toolStripBar5.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.toolStripBar5.Name = "toolStripBar5";
+            this.toolStripBar5.Size = new System.Drawing.Size(6, 32);
+            // 
+            // toolStripOpen
+            // 
+            this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripOpen.Image = global::BlackBoxWiki.Properties.Resources.OpenFileNew;
+            this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripOpen.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
+            this.toolStripOpen.Name = "toolStripOpen";
+            this.toolStripOpen.Size = new System.Drawing.Size(23, 29);
+            this.toolStripOpen.Text = "Open";
+            this.toolStripOpen.Click += new System.EventHandler(this.OpenTopic_Click);
+            // 
+            // toolStripEdit
+            // 
+            this.toolStripEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEdit.Image = global::BlackBoxWiki.Properties.Resources.EditFileNew;
+            this.toolStripEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEdit.Name = "toolStripEdit";
+            this.toolStripEdit.Size = new System.Drawing.Size(23, 29);
+            this.toolStripEdit.Text = "Edit";
+            this.toolStripEdit.Click += new System.EventHandler(this.EditTopic_Click);
+            // 
+            // toolStripRemove
+            // 
+            this.toolStripRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripRemove.Image = global::BlackBoxWiki.Properties.Resources.RemoveFileNew;
+            this.toolStripRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripRemove.Name = "toolStripRemove";
+            this.toolStripRemove.Size = new System.Drawing.Size(23, 29);
+            this.toolStripRemove.Text = "Remove";
+            this.toolStripRemove.Click += new System.EventHandler(this.RemoveTopic_Click);
+            // 
             // toolStripBar6
             // 
+            this.toolStripBar6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar6.Name = "toolStripBar6";
             this.toolStripBar6.Size = new System.Drawing.Size(6, 32);
             // 
@@ -580,6 +591,7 @@
             this.toolStripDonate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDonate.Image = global::BlackBoxWiki.Properties.Resources.PayPal;
             this.toolStripDonate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDonate.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.toolStripDonate.Name = "toolStripDonate";
             this.toolStripDonate.Size = new System.Drawing.Size(23, 29);
             this.toolStripDonate.Text = "Donate";
@@ -607,29 +619,31 @@
             this.toolStripContact.Text = "Contact";
             this.toolStripContact.Click += new System.EventHandler(this.Contact_Click);
             // 
-            // toolStripBar7
-            // 
-            this.toolStripBar7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripBar7.Name = "toolStripBar7";
-            this.toolStripBar7.Size = new System.Drawing.Size(6, 32);
-            // 
             // toolStripManual
             // 
             this.toolStripManual.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripManual.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripManual.Image = global::BlackBoxWiki.Properties.Resources.HelpIcon;
             this.toolStripManual.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripManual.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripManual.Name = "toolStripManual";
             this.toolStripManual.Size = new System.Drawing.Size(23, 29);
             this.toolStripManual.Text = "Manual";
             this.toolStripManual.Click += new System.EventHandler(this.Manual_Click);
             // 
+            // toolStripBar7
+            // 
+            this.toolStripBar7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripBar7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.toolStripBar7.Name = "toolStripBar7";
+            this.toolStripBar7.Size = new System.Drawing.Size(6, 32);
+            // 
             // viewerPanel
             // 
             this.viewerPanel.BackColor = System.Drawing.Color.White;
             this.viewerPanel.ColumnCount = 2;
-            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.28165F));
-            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.71836F));
+            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.91456F));
+            this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.08544F));
             this.viewerPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.viewerPanel.Controls.Add(this.searchPanel, 1, 0);
             this.viewerPanel.Controls.Add(this.messagePanel, 0, 0);
@@ -640,7 +654,7 @@
             this.viewerPanel.RowCount = 1;
             this.viewerPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97F));
             this.viewerPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.viewerPanel.Size = new System.Drawing.Size(1264, 671);
+            this.viewerPanel.Size = new System.Drawing.Size(1264, 672);
             this.viewerPanel.TabIndex = 1;
             this.viewerPanel.Visible = false;
             // 
@@ -653,13 +667,13 @@
             this.searchPanel.Controls.Add(this.SearchListBox, 0, 0);
             this.searchPanel.Controls.Add(this.InfoTextBox, 0, 1);
             this.searchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchPanel.Location = new System.Drawing.Point(901, 0);
+            this.searchPanel.Location = new System.Drawing.Point(909, 0);
             this.searchPanel.Margin = new System.Windows.Forms.Padding(0);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.RowCount = 2;
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.searchPanel.Size = new System.Drawing.Size(363, 671);
+            this.searchPanel.Size = new System.Drawing.Size(355, 672);
             this.searchPanel.TabIndex = 1;
             // 
             // SearchListBox
@@ -670,7 +684,7 @@
             this.SearchListBox.ItemHeight = 18;
             this.SearchListBox.Location = new System.Drawing.Point(3, 3);
             this.SearchListBox.Name = "SearchListBox";
-            this.SearchListBox.Size = new System.Drawing.Size(357, 530);
+            this.SearchListBox.Size = new System.Drawing.Size(349, 531);
             this.SearchListBox.TabIndex = 0;
             this.SearchListBox.Click += new System.EventHandler(this.SearchList_Click);
             this.SearchListBox.DoubleClick += new System.EventHandler(this.SearchList_DoubleClick);
@@ -681,11 +695,11 @@
             this.InfoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InfoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InfoTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.InfoTextBox.Location = new System.Drawing.Point(3, 539);
+            this.InfoTextBox.Location = new System.Drawing.Point(3, 540);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
             this.InfoTextBox.ReadOnly = true;
-            this.InfoTextBox.Size = new System.Drawing.Size(357, 129);
+            this.InfoTextBox.Size = new System.Drawing.Size(349, 129);
             this.InfoTextBox.TabIndex = 1;
             this.InfoTextBox.Click += new System.EventHandler(this.InfoBox_Click);
             // 
@@ -706,7 +720,7 @@
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.messagePanel.Size = new System.Drawing.Size(901, 671);
+            this.messagePanel.Size = new System.Drawing.Size(909, 672);
             this.messagePanel.TabIndex = 2;
             this.messagePanel.Visible = false;
             // 
@@ -715,10 +729,10 @@
             this.messageBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.messageBack.Controls.Add(this.messageGrid);
             this.messageBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.messageBack.Location = new System.Drawing.Point(225, 134);
+            this.messageBack.Location = new System.Drawing.Point(227, 134);
             this.messageBack.Margin = new System.Windows.Forms.Padding(0);
             this.messageBack.Name = "messageBack";
-            this.messageBack.Size = new System.Drawing.Size(450, 335);
+            this.messageBack.Size = new System.Drawing.Size(454, 336);
             this.messageBack.TabIndex = 0;
             // 
             // messageGrid
@@ -741,7 +755,7 @@
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.messageGrid.Size = new System.Drawing.Size(450, 335);
+            this.messageGrid.Size = new System.Drawing.Size(454, 336);
             this.messageGrid.TabIndex = 0;
             // 
             // replyTextBox
@@ -753,7 +767,7 @@
             this.replyTextBox.Location = new System.Drawing.Point(93, 103);
             this.replyTextBox.MaxLength = 1000;
             this.replyTextBox.Name = "replyTextBox";
-            this.replyTextBox.Size = new System.Drawing.Size(264, 26);
+            this.replyTextBox.Size = new System.Drawing.Size(266, 26);
             this.replyTextBox.TabIndex = 1;
             this.replyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.replyTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
@@ -769,7 +783,7 @@
             this.messageLabel.ForeColor = System.Drawing.Color.Gold;
             this.messageLabel.Location = new System.Drawing.Point(93, 67);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(264, 33);
+            this.messageLabel.Size = new System.Drawing.Size(266, 33);
             this.messageLabel.TabIndex = 0;
             this.messageLabel.Text = "Message";
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -784,7 +798,7 @@
             this.messageOK.ForeColor = System.Drawing.Color.Gold;
             this.messageOK.Location = new System.Drawing.Point(93, 203);
             this.messageOK.Name = "messageOK";
-            this.messageOK.Size = new System.Drawing.Size(264, 27);
+            this.messageOK.Size = new System.Drawing.Size(266, 27);
             this.messageOK.TabIndex = 2;
             this.messageOK.Text = "OK";
             this.messageOK.UseVisualStyleBackColor = false;
@@ -801,7 +815,7 @@
             this.messageCancel.ForeColor = System.Drawing.Color.Gold;
             this.messageCancel.Location = new System.Drawing.Point(93, 236);
             this.messageCancel.Name = "messageCancel";
-            this.messageCancel.Size = new System.Drawing.Size(264, 27);
+            this.messageCancel.Size = new System.Drawing.Size(266, 27);
             this.messageCancel.TabIndex = 3;
             this.messageCancel.Text = "Cancel";
             this.messageCancel.UseVisualStyleBackColor = false;
@@ -810,7 +824,7 @@
             // wikiMediaPlayer
             // 
             this.wikiMediaPlayer.Enabled = true;
-            this.wikiMediaPlayer.Location = new System.Drawing.Point(228, 472);
+            this.wikiMediaPlayer.Location = new System.Drawing.Point(230, 473);
             this.wikiMediaPlayer.Name = "wikiMediaPlayer";
             this.wikiMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wikiMediaPlayer.OcxState")));
             this.wikiMediaPlayer.Size = new System.Drawing.Size(75, 23);
@@ -828,9 +842,9 @@
             this.toolStripFullScreen,
             this.toolStripColor,
             this.toolStripWallPaper});
-            this.footerToolStrip.Location = new System.Drawing.Point(0, 703);
+            this.footerToolStrip.Location = new System.Drawing.Point(0, 704);
             this.footerToolStrip.Name = "footerToolStrip";
-            this.footerToolStrip.Size = new System.Drawing.Size(1264, 26);
+            this.footerToolStrip.Size = new System.Drawing.Size(1264, 25);
             this.footerToolStrip.TabIndex = 0;
             this.footerToolStrip.Text = "FooterToolStrip";
             // 
@@ -848,7 +862,7 @@
             this.toolStripInfo.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripInfo.ForeColor = System.Drawing.Color.Gold;
             this.toolStripInfo.Name = "toolStripInfo";
-            this.toolStripInfo.Size = new System.Drawing.Size(117, 23);
+            this.toolStripInfo.Size = new System.Drawing.Size(117, 22);
             this.toolStripInfo.Text = "Tool Information";
             // 
             // toolStripFullScreen
@@ -859,7 +873,7 @@
             this.toolStripFullScreen.Image = global::BlackBoxWiki.Properties.Resources.FullScreenFill;
             this.toolStripFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripFullScreen.Name = "toolStripFullScreen";
-            this.toolStripFullScreen.Size = new System.Drawing.Size(23, 23);
+            this.toolStripFullScreen.Size = new System.Drawing.Size(23, 22);
             this.toolStripFullScreen.Text = "Full Screen";
             this.toolStripFullScreen.Click += new System.EventHandler(this.ScreenSize_Click);
             // 
@@ -874,7 +888,7 @@
             this.toolStripColor.Image = global::BlackBoxWiki.Properties.Resources.ColorBack;
             this.toolStripColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripColor.Name = "toolStripColor";
-            this.toolStripColor.Size = new System.Drawing.Size(23, 23);
+            this.toolStripColor.Size = new System.Drawing.Size(23, 22);
             this.toolStripColor.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripColor.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.toolStripColor.ToolTipText = "Color";
@@ -888,7 +902,7 @@
             this.toolStripWallPaper.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripWallPaper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStripWallPaper.Name = "toolStripWallPaper";
-            this.toolStripWallPaper.Size = new System.Drawing.Size(23, 24);
+            this.toolStripWallPaper.Size = new System.Drawing.Size(23, 23);
             this.toolStripWallPaper.Text = "Wallpaper";
             this.toolStripWallPaper.Click += new System.EventHandler(this.WallPaper_Click);
             // 
