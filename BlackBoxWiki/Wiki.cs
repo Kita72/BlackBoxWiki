@@ -251,7 +251,7 @@ namespace BlackBoxWiki
 
         internal void RunSearchRequest(string meta)
         {
-            toolStripSearchText.Text = meta;
+            toolStripSearchText.Text = WikiUtility.ConvertFromSys(meta);
 
             toolStripSearch.PerformClick();
         }
@@ -260,11 +260,11 @@ namespace BlackBoxWiki
         {
             if (SingleClickControl)
             {
-                return "Topic directory, [SINGLE CLICK] file/link to preview!";
+                return "Topic Directory, [SINGLE CLICK] file/link to preview!";
             }
             else
             {
-                return "Topic directory, [DOUBLE CLICK] file/link to preview!";
+                return "Topic Directory, [DOUBLE CLICK] file/link to preview!";
             }
         }
 
@@ -425,9 +425,12 @@ namespace BlackBoxWiki
                 }
                 else
                 {
-                    toolStripSearchText.Text = link;
+                    if (link.Length > 0)
+                    {
+                        toolStripSearchText.Text = link;
 
-                    toolStripSearch.PerformClick();
+                        toolStripSearch.PerformClick();
+                    }
                 }
 
                 FileWorker.LogEvent($"RUN -> [{link}]=> RichText(link)");
@@ -487,13 +490,6 @@ namespace BlackBoxWiki
             WikiControl control = ControlManager.WebControl(source);
 
             SendToScreen(control);
-
-            if (control.FileType == FileTypes.Web)
-            {
-                WebView2 webView = control.Handle as WebView2;
-
-                webView.SourceChanged += WebView_SourceChanged;
-            }
 
             FileWorker.LogEvent("SEARCH -> [WebBrowser]=> Link");
         }
@@ -988,6 +984,9 @@ namespace BlackBoxWiki
 
                 InfoTextBox.ForeColor = Color.FromArgb(255, 64, 64, 64);
             }
+
+            if (InfoTextBox.Text.StartsWith("Topic Directory"))
+                InfoTextBox.Text = GetInfoString();
         }
 
         void WallPaper_Click(object sender, EventArgs e)

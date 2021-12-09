@@ -48,7 +48,7 @@ namespace BlackBoxWiki
                 {
                     toolStripInfo.ForeColor = Color.LimeGreen;
 
-                    toolStripInfo.Text = $"[WORKING] Processing -> {work}";
+                    toolStripInfo.Text = $"[WORKING] Processing <{work}>";
 
                     FileWorker.LogEvent($@"PROCESS -> [{work}]");
                 }
@@ -57,7 +57,7 @@ namespace BlackBoxWiki
             {
                 toolStripInfo.ForeColor = Color.Gold;
 
-                toolStripInfo.Text = $"[IDLE] Relaxing -> {GetRandomAct()} {work}";
+                toolStripInfo.Text = $"[IDLE] {GetRandomAct()} {work}";
             }
         }
 
@@ -117,7 +117,7 @@ namespace BlackBoxWiki
         {
             WikiForm.UpdateProgress(50);
 
-            message = new WikiMessage(ref WikiForm, "Enter a Name for the Wiki!", WikiMessage.ReplyType.NewWiki)
+            message = new WikiMessage(ref WikiForm, "Enter Wiki Title", WikiMessage.ReplyType.NewWiki)
             {
                 ShowBtn2 = true,
                 IsMultiLine = false,
@@ -183,7 +183,7 @@ namespace BlackBoxWiki
 
         internal static void AddTopic()
         {
-            message = new WikiMessage(ref WikiForm, "Enter a Name for the Topic!", WikiMessage.ReplyType.AddTopic);
+            message = new WikiMessage(ref WikiForm, "Enter Topic Name", WikiMessage.ReplyType.AddTopic);
 
             WikiForm.WikiMsg = message;
 
@@ -197,7 +197,7 @@ namespace BlackBoxWiki
 
         internal static void EditTopic(WikiTopic wikiTopic)
         {
-            message = new WikiMessage(ref WikiForm, $"You want to edit {wikiTopic.Title}?", WikiMessage.ReplyType.EditTopic);
+            message = new WikiMessage(ref WikiForm, $"Edit {wikiTopic.Title}?", WikiMessage.ReplyType.EditTopic);
 
             WikiForm.WikiMsg = message;
 
