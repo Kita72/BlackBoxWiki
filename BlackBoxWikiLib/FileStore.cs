@@ -16,7 +16,7 @@ namespace BlackBoxWikiLib
         {
             string SysInfo = $"{Environment.MachineName}-{DateTime.Now.DayOfYear + 1234}";
 
-            FileWorker.LogEvent($@"SETUP -> [FILES]=> {SysInfo} : {directory}");
+            FileWorker.LogEvent("file", "setup", $@"=> {SysInfo} : {directory}");
 
             if (Directory.Exists(directory))
             {

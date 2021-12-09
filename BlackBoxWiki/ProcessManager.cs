@@ -56,7 +56,7 @@ namespace BlackBoxWiki
         {
             FileType = GetFileType(topic.FileType);
 
-            FileWorker.LogEvent($"RUN -> [{FileType}]=> Process File");
+            FileWorker.LogEvent("process", "file", $"=> {FileType}");
 
             WikiControl control = null;
 

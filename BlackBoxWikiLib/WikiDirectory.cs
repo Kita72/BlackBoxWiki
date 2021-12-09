@@ -72,7 +72,7 @@ namespace BlackBoxWikiLib
             }
             else
             {
-                FileWorker.LogEvent($@"FAILED -> [START]=> {DirectoryStore.AppFolder}\Serial.mywiki)");
+                FileWorker.LogEvent("directory", "failed : start", $@"=> {DirectoryStore.AppFolder}\Serial.mywiki)");
 
                 return true;
             }

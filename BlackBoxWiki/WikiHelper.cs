@@ -65,7 +65,7 @@ namespace BlackBoxWiki
 
                     toolStripInfo.Text = $"[WORKING] Processing <{work}>";
 
-                    FileWorker.LogEvent($@"PROCESS -> [{work}]");
+                    FileWorker.LogEvent("process", "working", $"=> {work}");
                 }
             }
             else
@@ -108,7 +108,7 @@ namespace BlackBoxWiki
                 case 20: { return "Looking at myself"; }
                 case 21: { return "Searching for upgrades"; }
                 case 22: { return "Polishing the GPU"; }
-                case 23: { return "Watching life pass"; }
+                case 23: { return "Watching life pass by"; }
                 default: { return "Lost in thought"; }
             }
         }

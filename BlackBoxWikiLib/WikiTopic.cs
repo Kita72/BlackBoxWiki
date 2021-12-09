@@ -303,7 +303,7 @@ namespace BlackBoxWikiLib
                 sb.Append($"~{GetMetaString(true)}");
                 sb.Append($"~{information}");
 
-                FileWorker.LogEvent($"TOPIC -> [Processed]=> {sb}");
+                FileWorker.LogEvent("topic", "information", $"=> {sb}");
 
                 return sb.ToString();
             }

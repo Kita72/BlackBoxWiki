@@ -66,7 +66,7 @@ namespace BlackBoxWiki
 
             WikiForm.OpenMessage(this);
 
-            FileWorker.LogEvent(ToString());
+            FileWorker.LogEvent("message", "open", $"=> {ToString()}");
         }
 
         internal void FinishMessage()
@@ -174,7 +174,7 @@ namespace BlackBoxWiki
                     }
             }
 
-            FileWorker.LogEvent(ToString());
+            FileWorker.LogEvent("message", "finish", $"=> {ToString()}");
         }
 
         public override string ToString()

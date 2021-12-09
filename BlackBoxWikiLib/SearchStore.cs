@@ -59,11 +59,13 @@ namespace BlackBoxWikiLib
             }
         }
 
+        static readonly List<string> list = new List<string>();
+
         internal static List<string> SearchMetaList()
         {
             if (SearchLibrary.Count > 0)
             {
-                List<string> list = new List<string>();
+                list.Clear();
 
                 foreach (string key in SearchLibrary.Keys)
                 {

@@ -64,7 +64,7 @@ namespace BlackBoxWiki
                 Handle = textControl
             };
 
-            FileWorker.LogEvent("CREATE -> [Control]=> Text");
+            FileWorker.LogEvent("process", "create : text", $"=> {source}");
 
             return wikiControl;
         }
@@ -98,7 +98,7 @@ namespace BlackBoxWiki
                 }
                 catch
                 {
-                    FileWorker.LogEvent("FAILED -> [Control]=> RichText");
+                    FileWorker.LogEvent("process", "failed : richtext", $"=> {source}");
                 }
             }
 
@@ -108,7 +108,7 @@ namespace BlackBoxWiki
                 Handle = richControl
             };
 
-            FileWorker.LogEvent("CREATE -> [Control]=> RichText");
+            FileWorker.LogEvent("process", "create : richtext", $"=> {source}");
 
             return wikiControl;
         }
@@ -130,7 +130,7 @@ namespace BlackBoxWiki
                 ImageRes = File.Exists(source) ? imageControl.Image : null
             };
 
-            FileWorker.LogEvent("CREATE -> [Control]=> PictureBox(string)");
+            FileWorker.LogEvent("process", "create : image from string", $"=> {source}");
 
             return wikiControl;
         }
@@ -152,7 +152,7 @@ namespace BlackBoxWiki
                 ImageRes = source
             };
 
-            FileWorker.LogEvent("CREATE -> [Control]=> PictureBox(image)");
+            FileWorker.LogEvent("process", "create : image from file", $"=> {source}");
 
             return wikiControl;
         }
@@ -167,7 +167,7 @@ namespace BlackBoxWiki
                 Handle = mediaControl
             };
 
-            FileWorker.LogEvent("CREATE -> [Control]=> MediaPlayer");
+            FileWorker.LogEvent("process", "create : mediaplayer", $"=> {source}");
 
             return wikiControl;
         }
@@ -189,13 +189,13 @@ namespace BlackBoxWiki
                     Handle = webControl
                 };
 
-                FileWorker.LogEvent("CREATE -> [Control]=> WebBrowser");
+                FileWorker.LogEvent("process", "create : browser", $"=> {source}");
 
                 return wikiControl;
             }
             catch
             {
-                FileWorker.LogEvent("FAILED -> [Control]=> WebBrowser");
+                FileWorker.LogEvent("process", "failed : browser", $"=> {source}");
 
                 return null;
             }

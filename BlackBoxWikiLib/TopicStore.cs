@@ -147,7 +147,7 @@ namespace BlackBoxWikiLib
                     }
                 }
 
-                FileWorker.LogEvent($"TOPIC -> [LOADED]=> {TopicLibrary.Count} topics");
+                FileWorker.LogEvent("library", "topic : loaded", $@"=> {TopicLibrary.Count} topics");
 
                 RefreshSearch();
             }
@@ -185,7 +185,7 @@ namespace BlackBoxWikiLib
                         }
                         else
                         {
-                            FileWorker.LogEvent($"TOPIC -> [MERGED]=> Failed Copy : {$@"{fileFolder}\{topic.ID}.{topic.FileType}"}");
+                            FileWorker.LogEvent("library", "failed : merge", $@"=> {fileFolder}\{topic.ID}.{topic.FileType}");
                         }
 
                         topic.ID = newID;
@@ -196,12 +196,12 @@ namespace BlackBoxWikiLib
                         }
                         else
                         {
-                            FileWorker.LogEvent($"TOPIC -> [MERGED]=> Failed ID {newID}");
+                            FileWorker.LogEvent("library", "failed : merge", $@"=> {newID}");
                         }
                     }
                 }
 
-                FileWorker.LogEvent($"TOPIC -> [MERGED]=> {TopicLibrary.Count - preCount} new topics");
+                FileWorker.LogEvent("library", "merge", $@"=> {TopicLibrary.Count - preCount} new topics");
 
                 RefreshSearch();
             }

@@ -10,6 +10,8 @@ namespace BlackBoxWikiLib
         {
             DeleteFile(file);
 
+            LogEvent("file", "create", $"=> {file} : {text}");
+
             WriteAllFileText(file, text, false);
         }
 
@@ -17,7 +19,7 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(fileFrom) && !File.Exists(fileTo))
             {
-                LogEvent($"COPY -> [FILE]=> {fileFrom} : {fileTo}");
+                LogEvent("file", "success : copy", $"=> {fileFrom} : {fileTo}");
 
                 File.Copy(fileFrom, fileTo);
 
@@ -25,6 +27,8 @@ namespace BlackBoxWikiLib
             }
             else
             {
+                LogEvent("file", "failed : copy", $"=> {fileFrom} : {fileTo}");
+
                 return false;
             }
         }
@@ -33,7 +37,7 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(fileFrom) && !File.Exists(fileTo))
             {
-                LogEvent($"MOVE -> [FILE]=> {fileFrom} : {fileTo}");
+                LogEvent("file", "success : move", $"=> {fileFrom} : {fileTo}");
 
                 File.Move(fileFrom, fileTo);
 
@@ -41,6 +45,8 @@ namespace BlackBoxWikiLib
             }
             else
             {
+                LogEvent("file", "failed : move", $"=> {fileFrom} : {fileTo}");
+
                 return false;
             }
         }
@@ -49,9 +55,13 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(file))
             {
-                LogEvent($"DELETE -> [FILE]=> {file}");
+                LogEvent("file", "success : delete", $"=> {file}");
 
                 File.Delete(file);
+            }
+            else
+            {
+                LogEvent("file", "failed : delete", $"=> {file}");
             }
         }
 
@@ -61,7 +71,7 @@ namespace BlackBoxWikiLib
             {
                 if (File.Exists(file) && append)
                 {
-                    LogEvent($"WRITE-TEXT -> [FILE]=> {file} : {content} : {append}");
+                    LogEvent("file", "success : append text", $"=> {file} : {content.Length} : {append}");
 
                     File.AppendAllText(file, content);
 
@@ -73,14 +83,18 @@ namespace BlackBoxWikiLib
                     if (File.Exists(file))
                         DeleteFile(file);
 
-                    LogEvent($"WRITE-TEXT -> [FILE]=> {file} : {content} : {append}");
+                    LogEvent("file", "success : write text", $"=> {file} : {content.Length} : {append}");
 
                     File.WriteAllText(file, content);
                 }
                 catch
                 {
-                    LogEvent($"WRITE-TEXT -> [ERROR]=> WriteAllText({file}, {content.Length}, {append})");
+                    LogEvent("file", "failed : write text", $"=> {file} : {content.Length} : {append}");
                 }
+            }
+            else
+            {
+                LogEvent("file", "failed : write text", $"=> {file} : {content.Length} : {append}");
             }
         }
 
@@ -90,7 +104,7 @@ namespace BlackBoxWikiLib
             {
                 if (File.Exists(file) && append)
                 {
-                    LogEvent($"WRITE-LINE -> [FILE]=> {file} : {content} : {append}");
+                    LogEvent("file", "success : append line", $"=> {file} : {content.Length} : {append}");
 
                     File.AppendAllLines(file, content);
 
@@ -102,14 +116,18 @@ namespace BlackBoxWikiLib
                     if (File.Exists(file))
                         DeleteFile(file);
 
-                    LogEvent($"WRITE-LINE -> [FILE]=> {file} : {content} : {append}");
+                    LogEvent("file", "success : write line", $"=> {file} : {content.Length} : {append}");
 
                     File.WriteAllLines(file, content);
                 }
                 catch
                 {
-                    LogEvent($"WRITE-LINE -> [ERROR]=> WriteAllLines({file}, {content.Length})");
+                    LogEvent("file", "failed : write line", $"=> {file} : {content.Length} : {append}");
                 }
+            }
+            else
+            {
+                LogEvent("file", "failed : write line", $"=> {file} : {content.Length} : {append}");
             }
         }
 
@@ -117,12 +135,14 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(file))
             {
-                LogEvent($"READ-TEXT -> [FILE]=> {file}");
+                LogEvent("file", "success : read text", $"=> {file}");
 
                 return File.ReadAllText(file);
             }
             else
             {
+                LogEvent("file", "success : read text", $"=> {file}");
+
                 return null;
             }
         }
@@ -131,12 +151,14 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(file))
             {
-                LogEvent($"READ-LINE -> [FILE]=> {file}");
+                LogEvent("file", "success : read line", $"=> {file}");
 
                 return File.ReadAllLines(file);
             }
             else
             {
+                LogEvent("file", "failed : read line", $"=> {file}");
+
                 return null;
             }
         }
@@ -145,16 +167,16 @@ namespace BlackBoxWikiLib
         {
             DeleteFile(zipPath);
 
-            LogEvent($"[ZIP -> [WIKI]=> {startPath} : {zipPath}");
+            LogEvent("zip", "export", $"=> {startPath} : {zipPath}");
 
             ZipFile.CreateFromDirectory(startPath, zipPath);
         }
 
         static readonly List<string> LogList = new List<string>();
 
-        public static void LogEvent(string log)
+        public static void LogEvent(string log, string method, string values)
         {
-            LogList.Add(log);
+            LogList.Add($"{log.ToUpper()} -> [{method}] {values}");
         }
 
         public static void SaveLog()
@@ -163,7 +185,7 @@ namespace BlackBoxWikiLib
             {
                 foreach (string log in LogList)
                 {
-                    if (log.StartsWith("SETUP -> [DIRECTORIES]"))
+                    if (log.StartsWith("SETUP -> [MYWIKI]"))
                     {
                         File.WriteAllText(FileStore.LogFile, log + "\n");
                     }

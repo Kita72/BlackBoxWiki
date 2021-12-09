@@ -50,7 +50,7 @@ namespace BlackBoxWikiLib
 
         public static void ResetAll()
         {
-            FileWorker.LogEvent("RESET -> [All Libraries]");
+            FileWorker.LogEvent("utility", "reset", $"=> All Libraries");
 
             TopicStore.ResetLibrary();
 
@@ -61,13 +61,13 @@ namespace BlackBoxWikiLib
         {
             if (File.Exists(FileStore.TopicFile))
             {
-                FileWorker.LogEvent("SAVE -> [Library - TOPIC]");
+                FileWorker.LogEvent("utility", "success : save", $"=> All Libraries");
 
                 TopicStore.SaveTopicData();
             }
             else
             {
-                FileWorker.LogEvent("SAVE -> [Library - NONE]");
+                FileWorker.LogEvent("utility", "failed : save", $"=> All Libraries");
             }
         }
     }

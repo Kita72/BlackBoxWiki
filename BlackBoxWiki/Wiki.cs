@@ -287,7 +287,7 @@ namespace BlackBoxWiki
         {
             SearchManager.Search(WikiUtility.ConvertFromSys(toolStripSearchText.Text));
 
-            FileWorker.LogEvent($"Search -> [{toolStripSearchText.Text}]=> Start");
+            FileWorker.LogEvent("search", "start", $"=> {toolStripSearchText.Text}");
         }
 
         void SearchDirectory_Click(object sender, EventArgs e)
@@ -378,11 +378,12 @@ namespace BlackBoxWiki
 
                             InfoTextBox.Text = topic.Information;
 
-                            FileWorker.LogEvent($"SEARCH -> [Search List]=> {topic.Display}");
+                            FileWorker.LogEvent("search", "success : list", $"=> {topic.Display}");
                         }
                         else
                         {
-                            FileWorker.LogEvent($"FAILED -> [Search List]=> {topic.Display}");
+
+                            FileWorker.LogEvent("search", "failed : list", $"=> {topic.Display}");
                         }
                     }
                 }
@@ -440,7 +441,7 @@ namespace BlackBoxWiki
                     }
                 }
 
-                FileWorker.LogEvent($"RUN -> [{link}]=> RichText(link)");
+                FileWorker.LogEvent("search", "richlink", $"=> {link}");
             }
         }
 
@@ -498,7 +499,7 @@ namespace BlackBoxWiki
 
             SendToScreen(control);
 
-            FileWorker.LogEvent("SEARCH -> [WebBrowser]=> Link");
+            FileWorker.LogEvent("search", "browser", $"=> {source}");
         }
 
         void AddTopic_Click(object sender, EventArgs e)
@@ -1055,7 +1056,7 @@ namespace BlackBoxWiki
                             }
                             catch
                             {
-                                FileWorker.LogEvent("ERROR - > Failed to edit wallpaper");
+                                FileWorker.LogEvent("wallpaper", "error", $"=> {wallpaper}");
                             }
                         }
                     }
@@ -1180,7 +1181,7 @@ namespace BlackBoxWiki
         {
             IsForcedClosed = true;
 
-            FileWorker.LogEvent($@"STOPPED -> [File Deleted]=> Forced Close()");
+            FileWorker.LogEvent("stop", "forced", $@"=> File Deleted");
 
             Close();
         }
@@ -1200,7 +1201,7 @@ namespace BlackBoxWiki
             if (!IsForcedClosed)
                 WikiDir.StopWiki();
 
-            FileWorker.LogEvent($@"STOPPED -> [{Application.ProductName.ToUpper()}]=> Closing()");
+            FileWorker.LogEvent("stop", "close", $@"=> {Application.ProductName.ToUpper()}");
 
             FileWorker.SaveLog();
         }

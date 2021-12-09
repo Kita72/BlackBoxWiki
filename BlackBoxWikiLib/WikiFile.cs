@@ -46,7 +46,7 @@
             DirectoryStore.FileFolder = $@"{directory}\Files";
             DirectoryStore.BackUpFolder = $@"{directory}\BackUp";
 
-            FileWorker.LogEvent($@"LOAD -> [WIKI FOLDERS]=> {DirectoryStore.WikiFolder} : {DirectoryStore.FileFolder} : {DirectoryStore.BackUpFolder}");
+            FileWorker.LogEvent("folder", "load", $"=> {DirectoryStore.WikiFolder} : {DirectoryStore.FileFolder} : {DirectoryStore.BackUpFolder}");
 
             DirectoryStore.SetUpFileDirectory();
         }

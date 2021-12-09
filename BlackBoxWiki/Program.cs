@@ -15,7 +15,7 @@ namespace BlackBoxWiki
             {
                 WikiHelper.WikiDir.StartWiki();
 
-                FileWorker.LogEvent($@"STARTED -> [{Application.ProductName.ToUpper()}]=> Main()");
+                FileWorker.LogEvent("main", "start", $@"=> {Application.ProductName.ToUpper()}");
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

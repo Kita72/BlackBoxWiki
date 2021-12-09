@@ -26,7 +26,7 @@ namespace BlackBoxWikiLib
                 Directory.CreateDirectory(MyWikiFolder);
             }
 
-            FileWorker.LogEvent($@"SETUP -> [DIRECTORIES]=> {MyWikiFolder}");
+            FileWorker.LogEvent("setup", "mywiki", $@"=> {MyWikiFolder}");
 
             return true;
         }

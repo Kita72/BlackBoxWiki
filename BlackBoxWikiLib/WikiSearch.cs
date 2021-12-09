@@ -78,7 +78,7 @@ namespace BlackBoxWikiLib
                 sb.Append($"{Meta}");
                 sb.Append($"~{TopicIdString()}");
 
-                FileWorker.LogEvent($"SEARCH -> [Processed]=> {sb}");
+                FileWorker.LogEvent("search", "information", $"=> {sb}");
 
                 return sb.ToString();
             }
