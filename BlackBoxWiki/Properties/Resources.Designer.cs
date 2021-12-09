@@ -91,70 +91,100 @@ namespace BlackBoxWiki.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1=as
-        ///2=I
-        ///3=his
-        ///4=that
-        ///5=he
-        ///6=was
-        ///7=for
-        ///8=on
-        ///9=are
-        ///10=with
-        ///11=they
-        ///12=be
-        ///13=at
-        ///14=one
-        ///15=have
-        ///16=this
-        ///17=from
-        ///18=by
-        ///19=hot
-        ///20=word
-        ///21=but
-        ///22=what
-        ///23=some
-        ///24=is
-        ///25=it
-        ///26=you
-        ///27=or
-        ///28=had
-        ///29=the
-        ///30=of
-        ///31=to
-        ///32=and
-        ///33=a
-        ///34=in
-        ///35=we
-        ///36=can
-        ///37=out
-        ///38=other
-        ///39=were
-        ///40=which
-        ///41=do
-        ///42=their
-        ///43=time
-        ///44=if
-        ///45=will
-        ///46=how
-        ///47=said
-        ///48=an
-        ///49=each
-        ///50=tell
-        ///51=does
-        ///52=set
-        ///53=three
-        ///54=want
-        ///55=air
-        ///56=well
-        ///57=also
-        ///58=play
-        ///59=small
-        ///60=end
-        ///61=put
-        ///62=home
-        ///63=read
-        ///64=ha [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AS
+        ///I
+        ///HIS
+        ///THAT
+        ///HE
+        ///WAS
+        ///FOR
+        ///ON
+        ///ARE
+        ///WITH
+        ///THEY
+        ///BE
+        ///AT
+        ///ONE
+        ///HAVE
+        ///THIS
+        ///FROM
+        ///BY
+        ///HOT
+        ///WORD
+        ///BUT
+        ///WHAT
+        ///SOME
+        ///IS
+        ///IT
+        ///YOU
+        ///OR
+        ///HAD
+        ///THE
+        ///OF
+        ///TO
+        ///AND
+        ///A
+        ///IN
+        ///WE
+        ///CAN
+        ///OUT
+        ///OTHER
+        ///WERE
+        ///WHICH
+        ///DO
+        ///THEIR
+        ///TIME
+        ///IF
+        ///WILL
+        ///HOW
+        ///SAID
+        ///AN
+        ///EACH
+        ///TELL
+        ///DOES
+        ///SET
+        ///THREE
+        ///WANT
+        ///AIR
+        ///WELL
+        ///ALSO
+        ///PLAY
+        ///SMALL
+        ///END
+        ///PUT
+        ///HOME
+        ///READ
+        ///HAND
+        ///PORT
+        ///LARGE
+        ///SPELL
+        ///ADD
+        ///EVEN
+        ///LAND
+        ///HERE
+        ///MUST
+        ///BIG
+        ///HIGH
+        ///SUCH
+        ///FOLLOW
+        ///ACT
+        ///WHY
+        ///ASK
+        ///MEN
+        ///CHANGE
+        ///WENT
+        ///LIGHT
+        ///KIND
+        ///OFF
+        ///NEED
+        ///HOUSE
+        ///PICTURE
+        ///TRY
+        ///US
+        ///AGAIN
+        ///ANIMAL
+        ///POINT
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CommonWords {
             get {
@@ -174,12 +204,13 @@ namespace BlackBoxWiki.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Cascadia Mono;}{\f2\fnil\fcharset0 Cascadia Mono;}}
-        ///{\colortbl ;\red0\green77\blue187;\red102\green102\blue102;\red0\green0\blue255;\red128\green0\blue0;}
+        ///{\colortbl ;\red0\green77\blue187;\red102\green102\blue102;\red0\green0\blue255;}
         ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
         ///\pard\sa200\sl276\slmult1\qc\b\f0\fs40\lang9\par
         ///
         ///\pard\sa200\sl240\slmult1\qc{\pict{\*\picprop}\wmetafile8\picw2672\pich2646\picwgoal1515\pichgoal1500 
-        ///0100090000039a1600000000711600000000040000000301080005000000 [rest of string was truncated]&quot;;.
+        ///0100090000039a16000000007116000000000400000003010800050000000b0200000000050000
+        ///0 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ContactInfo {
             get {
@@ -440,6 +471,26 @@ namespace BlackBoxWiki.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ToolTipNew {
+            get {
+                object obj = ResourceManager.GetObject("ToolTipNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolTipOld {
+            get {
+                object obj = ResourceManager.GetObject("ToolTipOld", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WallPaper {
             get {
                 object obj = ResourceManager.GetObject("WallPaper", resourceCulture);
@@ -469,11 +520,11 @@ namespace BlackBoxWiki.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
-        ///{\colortbl ;\red255\green192\blue0;\red155\green0\blue211;\red0\green176\blue80;\red0\green0\blue0;\red0\green77\blue187;\red255\green0\blue0;\red165\green165\blue165;\red255\green128\blue64;\red102\green102\blue102;\red255\green255\blue0;\red0\green0\blue255;}
+        ///{\colortbl ;\red255\green192\blue0;\red0\green77\blue187;\red155\green0\blue211;\red0\green176\blue80;\red0\green0\blue0;\red255\green128\blue0;\red255\green0\blue0;\red165\green165\blue165;\red255\green128\blue64;\red102\green102\blue102;\red255\green255\blue0;\red0\green0\blue255;}
         ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
         ///\pard\sa200\sl276\slmult1\qc\f0\fs22\lang9\par
         ///
-        ///\pard\sa200\sl240\slmult1\qc{\pict{\*\picprop}\wmetafile8\picw4895\ [rest of string was truncated]&quot;;.
+        ///\pard\sa200\sl240\slmult1\qc{\pict{\*\picpro [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string WikiInfo {
             get {

@@ -99,6 +99,7 @@
             this.toolStripInfo = new System.Windows.Forms.ToolStripLabel();
             this.toolStripFullScreen = new System.Windows.Forms.ToolStripButton();
             this.toolStripColor = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTips = new System.Windows.Forms.ToolStripButton();
             this.toolStripWallPaper = new System.Windows.Forms.ToolStripButton();
             this.timerAI = new System.Windows.Forms.Timer(this.components);
             this.wikiSystemWatcher = new System.IO.FileSystemWatcher();
@@ -163,6 +164,7 @@
             this.toolStripLogo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripLogo.Name = "toolStripLogo";
             this.toolStripLogo.Size = new System.Drawing.Size(23, 29);
+            this.toolStripLogo.Tag = "Home";
             this.toolStripLogo.Text = "Home";
             this.toolStripLogo.ToolTipText = "Home";
             this.toolStripLogo.Click += new System.EventHandler(this.HomeLogo_Click);
@@ -189,7 +191,8 @@
             this.toolStripNew.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripNew.Name = "toolStripNew";
             this.toolStripNew.Size = new System.Drawing.Size(23, 29);
-            this.toolStripNew.Text = "New";
+            this.toolStripNew.Tag = "New Wiki";
+            this.toolStripNew.Text = "New Wiki";
             this.toolStripNew.Click += new System.EventHandler(this.NewWiki_Click);
             // 
             // toolStripImport
@@ -199,7 +202,8 @@
             this.toolStripImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripImport.Name = "toolStripImport";
             this.toolStripImport.Size = new System.Drawing.Size(23, 29);
-            this.toolStripImport.Text = "Import";
+            this.toolStripImport.Tag = "Import Wiki";
+            this.toolStripImport.Text = "Import Wiki";
             this.toolStripImport.Click += new System.EventHandler(this.WikiImport_Click);
             // 
             // toolStripMerge
@@ -209,7 +213,8 @@
             this.toolStripMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMerge.Name = "toolStripMerge";
             this.toolStripMerge.Size = new System.Drawing.Size(23, 29);
-            this.toolStripMerge.Text = "Merge";
+            this.toolStripMerge.Tag = "Merge Wiki";
+            this.toolStripMerge.Text = "Merge Wiki";
             this.toolStripMerge.Click += new System.EventHandler(this.WikiMerge_Click);
             // 
             // toolStripExport
@@ -219,7 +224,8 @@
             this.toolStripExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripExport.Name = "toolStripExport";
             this.toolStripExport.Size = new System.Drawing.Size(23, 29);
-            this.toolStripExport.Text = "Export";
+            this.toolStripExport.Tag = "Export Wiki";
+            this.toolStripExport.Text = "Export Wiki";
             this.toolStripExport.Click += new System.EventHandler(this.WikiExport_Click);
             // 
             // toolStripDelete
@@ -229,7 +235,8 @@
             this.toolStripDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDelete.Name = "toolStripDelete";
             this.toolStripDelete.Size = new System.Drawing.Size(23, 29);
-            this.toolStripDelete.Text = "Delete";
+            this.toolStripDelete.Tag = "Delete Wiki";
+            this.toolStripDelete.Text = "Delete Wiki";
             this.toolStripDelete.Click += new System.EventHandler(this.WikiDelete_Click);
             // 
             // toolStripBar2
@@ -281,6 +288,7 @@
             this.toolStripSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSearch.Name = "toolStripSearch";
             this.toolStripSearch.Size = new System.Drawing.Size(23, 29);
+            this.toolStripSearch.Tag = "Search";
             this.toolStripSearch.Text = "Search";
             this.toolStripSearch.Click += new System.EventHandler(this.SearchButton_Click);
             // 
@@ -306,7 +314,8 @@
             this.toolStripAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripAdd.Name = "toolStripAdd";
             this.toolStripAdd.Size = new System.Drawing.Size(23, 29);
-            this.toolStripAdd.Text = "Add";
+            this.toolStripAdd.Tag = "Add Topic";
+            this.toolStripAdd.Text = "Add Topic";
             this.toolStripAdd.Click += new System.EventHandler(this.AddTopic_Click);
             // 
             // toolStripCopy
@@ -316,12 +325,12 @@
             this.toolStripCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopy.Name = "toolStripCopy";
             this.toolStripCopy.Size = new System.Drawing.Size(23, 29);
+            this.toolStripCopy.Tag = "Copy File";
             this.toolStripCopy.Text = "Copy File";
             this.toolStripCopy.Click += new System.EventHandler(this.CopyMove_Click);
             // 
             // toolStripBar4
             // 
-            this.toolStripBar4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar4.Name = "toolStripBar4";
             this.toolStripBar4.Size = new System.Drawing.Size(6, 32);
             // 
@@ -330,8 +339,10 @@
             this.toolStripScrape.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripScrape.Image = global::BlackBoxWiki.Properties.Resources.ScrapeFileNew;
             this.toolStripScrape.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripScrape.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripScrape.Name = "toolStripScrape";
             this.toolStripScrape.Size = new System.Drawing.Size(23, 29);
+            this.toolStripScrape.Tag = "Scrape File [OFF]";
             this.toolStripScrape.Text = "Scrape File [OFF]";
             this.toolStripScrape.Click += new System.EventHandler(this.ScrapeFile_Click);
             // 
@@ -353,8 +364,11 @@
             this.toolStripLetterLevel.ForeColor = System.Drawing.Color.Gold;
             this.toolStripLetterLevel.Image = global::BlackBoxWiki.Properties.Resources.LetterLevel;
             this.toolStripLetterLevel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripLetterLevel.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripLetterLevel.Name = "toolStripLetterLevel";
+            this.toolStripLetterLevel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.toolStripLetterLevel.Size = new System.Drawing.Size(32, 29);
+            this.toolStripLetterLevel.Tag = "Letter Count";
             this.toolStripLetterLevel.Text = "Letter Count";
             this.toolStripLetterLevel.ToolTipText = "Letter Count";
             this.toolStripLetterLevel.ButtonClick += new System.EventHandler(this.ScrapeLetter_Click);
@@ -362,7 +376,7 @@
             // charOff
             // 
             this.charOff.Name = "charOff";
-            this.charOff.Size = new System.Drawing.Size(81, 22);
+            this.charOff.Size = new System.Drawing.Size(180, 22);
             this.charOff.Tag = "0";
             this.charOff.Text = "0";
             this.charOff.Click += new System.EventHandler(this.CharLevel_Click);
@@ -370,7 +384,7 @@
             // charOne
             // 
             this.charOne.Name = "charOne";
-            this.charOne.Size = new System.Drawing.Size(81, 22);
+            this.charOne.Size = new System.Drawing.Size(180, 22);
             this.charOne.Tag = "1";
             this.charOne.Text = "1";
             this.charOne.Click += new System.EventHandler(this.CharLevel_Click);
@@ -378,7 +392,7 @@
             // charTwo
             // 
             this.charTwo.Name = "charTwo";
-            this.charTwo.Size = new System.Drawing.Size(81, 22);
+            this.charTwo.Size = new System.Drawing.Size(180, 22);
             this.charTwo.Tag = "2";
             this.charTwo.Text = "2";
             this.charTwo.Click += new System.EventHandler(this.CharLevel_Click);
@@ -386,7 +400,7 @@
             // charThree
             // 
             this.charThree.Name = "charThree";
-            this.charThree.Size = new System.Drawing.Size(81, 22);
+            this.charThree.Size = new System.Drawing.Size(180, 22);
             this.charThree.Tag = "3";
             this.charThree.Text = "3";
             this.charThree.Click += new System.EventHandler(this.CharLevel_Click);
@@ -394,7 +408,7 @@
             // charFour
             // 
             this.charFour.Name = "charFour";
-            this.charFour.Size = new System.Drawing.Size(81, 22);
+            this.charFour.Size = new System.Drawing.Size(180, 22);
             this.charFour.Tag = "4";
             this.charFour.Text = "4";
             this.charFour.Click += new System.EventHandler(this.CharLevel_Click);
@@ -402,7 +416,7 @@
             // charFive
             // 
             this.charFive.Name = "charFive";
-            this.charFive.Size = new System.Drawing.Size(81, 22);
+            this.charFive.Size = new System.Drawing.Size(180, 22);
             this.charFive.Tag = "5";
             this.charFive.Text = "5";
             this.charFive.Click += new System.EventHandler(this.CharLevel_Click);
@@ -410,7 +424,7 @@
             // charSix
             // 
             this.charSix.Name = "charSix";
-            this.charSix.Size = new System.Drawing.Size(81, 22);
+            this.charSix.Size = new System.Drawing.Size(180, 22);
             this.charSix.Tag = "6";
             this.charSix.Text = "6";
             this.charSix.Click += new System.EventHandler(this.CharLevel_Click);
@@ -418,7 +432,7 @@
             // charSeven
             // 
             this.charSeven.Name = "charSeven";
-            this.charSeven.Size = new System.Drawing.Size(81, 22);
+            this.charSeven.Size = new System.Drawing.Size(180, 22);
             this.charSeven.Tag = "7";
             this.charSeven.Text = "7";
             this.charSeven.Click += new System.EventHandler(this.CharLevel_Click);
@@ -426,7 +440,7 @@
             // charEight
             // 
             this.charEight.Name = "charEight";
-            this.charEight.Size = new System.Drawing.Size(81, 22);
+            this.charEight.Size = new System.Drawing.Size(180, 22);
             this.charEight.Tag = "8";
             this.charEight.Text = "8";
             this.charEight.Click += new System.EventHandler(this.CharLevel_Click);
@@ -434,7 +448,7 @@
             // charNine
             // 
             this.charNine.Name = "charNine";
-            this.charNine.Size = new System.Drawing.Size(81, 22);
+            this.charNine.Size = new System.Drawing.Size(180, 22);
             this.charNine.Tag = "9";
             this.charNine.Text = "9";
             this.charNine.Click += new System.EventHandler(this.CharLevel_Click);
@@ -457,15 +471,17 @@
             this.toolStripFreqLevel.ForeColor = System.Drawing.Color.Gold;
             this.toolStripFreqLevel.Image = global::BlackBoxWiki.Properties.Resources.FreqLevel;
             this.toolStripFreqLevel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripFreqLevel.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.toolStripFreqLevel.Name = "toolStripFreqLevel";
             this.toolStripFreqLevel.Size = new System.Drawing.Size(32, 29);
+            this.toolStripFreqLevel.Tag = "Frequency";
             this.toolStripFreqLevel.Text = "Frequency";
             this.toolStripFreqLevel.ButtonClick += new System.EventHandler(this.ScrapeFrequency_Click);
             // 
             // freqOff
             // 
             this.freqOff.Name = "freqOff";
-            this.freqOff.Size = new System.Drawing.Size(81, 22);
+            this.freqOff.Size = new System.Drawing.Size(180, 22);
             this.freqOff.Tag = "0";
             this.freqOff.Text = "0";
             this.freqOff.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -473,7 +489,7 @@
             // freqOne
             // 
             this.freqOne.Name = "freqOne";
-            this.freqOne.Size = new System.Drawing.Size(81, 22);
+            this.freqOne.Size = new System.Drawing.Size(180, 22);
             this.freqOne.Tag = "1";
             this.freqOne.Text = "1";
             this.freqOne.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -481,7 +497,7 @@
             // freqTwo
             // 
             this.freqTwo.Name = "freqTwo";
-            this.freqTwo.Size = new System.Drawing.Size(81, 22);
+            this.freqTwo.Size = new System.Drawing.Size(180, 22);
             this.freqTwo.Tag = "2";
             this.freqTwo.Text = "2";
             this.freqTwo.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -489,7 +505,7 @@
             // freqThree
             // 
             this.freqThree.Name = "freqThree";
-            this.freqThree.Size = new System.Drawing.Size(81, 22);
+            this.freqThree.Size = new System.Drawing.Size(180, 22);
             this.freqThree.Tag = "3";
             this.freqThree.Text = "3";
             this.freqThree.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -497,7 +513,7 @@
             // freqFour
             // 
             this.freqFour.Name = "freqFour";
-            this.freqFour.Size = new System.Drawing.Size(81, 22);
+            this.freqFour.Size = new System.Drawing.Size(180, 22);
             this.freqFour.Tag = "4";
             this.freqFour.Text = "4";
             this.freqFour.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -505,7 +521,7 @@
             // freqFive
             // 
             this.freqFive.Name = "freqFive";
-            this.freqFive.Size = new System.Drawing.Size(81, 22);
+            this.freqFive.Size = new System.Drawing.Size(180, 22);
             this.freqFive.Tag = "5";
             this.freqFive.Text = "5";
             this.freqFive.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -513,7 +529,7 @@
             // freqSix
             // 
             this.freqSix.Name = "freqSix";
-            this.freqSix.Size = new System.Drawing.Size(81, 22);
+            this.freqSix.Size = new System.Drawing.Size(180, 22);
             this.freqSix.Tag = "6";
             this.freqSix.Text = "6";
             this.freqSix.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -521,7 +537,7 @@
             // freqSeven
             // 
             this.freqSeven.Name = "freqSeven";
-            this.freqSeven.Size = new System.Drawing.Size(81, 22);
+            this.freqSeven.Size = new System.Drawing.Size(180, 22);
             this.freqSeven.Tag = "7";
             this.freqSeven.Text = "7";
             this.freqSeven.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -529,7 +545,7 @@
             // freqEight
             // 
             this.freqEight.Name = "freqEight";
-            this.freqEight.Size = new System.Drawing.Size(81, 22);
+            this.freqEight.Size = new System.Drawing.Size(180, 22);
             this.freqEight.Tag = "8";
             this.freqEight.Text = "8";
             this.freqEight.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -537,7 +553,7 @@
             // freqNine
             // 
             this.freqNine.Name = "freqNine";
-            this.freqNine.Size = new System.Drawing.Size(81, 22);
+            this.freqNine.Size = new System.Drawing.Size(180, 22);
             this.freqNine.Tag = "9";
             this.freqNine.Text = "9";
             this.freqNine.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -556,7 +572,8 @@
             this.toolStripOpen.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripOpen.Name = "toolStripOpen";
             this.toolStripOpen.Size = new System.Drawing.Size(23, 29);
-            this.toolStripOpen.Text = "Open";
+            this.toolStripOpen.Tag = "Open Topic";
+            this.toolStripOpen.Text = "Open Topic";
             this.toolStripOpen.Click += new System.EventHandler(this.OpenTopic_Click);
             // 
             // toolStripEdit
@@ -566,7 +583,8 @@
             this.toolStripEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripEdit.Name = "toolStripEdit";
             this.toolStripEdit.Size = new System.Drawing.Size(23, 29);
-            this.toolStripEdit.Text = "Edit";
+            this.toolStripEdit.Tag = "Edit Topic";
+            this.toolStripEdit.Text = "Edit Topic";
             this.toolStripEdit.Click += new System.EventHandler(this.EditTopic_Click);
             // 
             // toolStripRemove
@@ -576,12 +594,12 @@
             this.toolStripRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripRemove.Name = "toolStripRemove";
             this.toolStripRemove.Size = new System.Drawing.Size(23, 29);
-            this.toolStripRemove.Text = "Remove";
+            this.toolStripRemove.Tag = "Remove Topic";
+            this.toolStripRemove.Text = "Remove Topic";
             this.toolStripRemove.Click += new System.EventHandler(this.RemoveTopic_Click);
             // 
             // toolStripBar6
             // 
-            this.toolStripBar6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.toolStripBar6.Name = "toolStripBar6";
             this.toolStripBar6.Size = new System.Drawing.Size(6, 32);
             // 
@@ -594,6 +612,7 @@
             this.toolStripDonate.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.toolStripDonate.Name = "toolStripDonate";
             this.toolStripDonate.Size = new System.Drawing.Size(23, 29);
+            this.toolStripDonate.Tag = "Donate";
             this.toolStripDonate.Text = "Donate";
             this.toolStripDonate.Click += new System.EventHandler(this.Donate_Click);
             // 
@@ -605,6 +624,7 @@
             this.toolStripYouTube.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripYouTube.Name = "toolStripYouTube";
             this.toolStripYouTube.Size = new System.Drawing.Size(23, 29);
+            this.toolStripYouTube.Tag = "YouTube";
             this.toolStripYouTube.Text = "YouTube";
             this.toolStripYouTube.Click += new System.EventHandler(this.YouTube_Click);
             // 
@@ -616,6 +636,7 @@
             this.toolStripContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripContact.Name = "toolStripContact";
             this.toolStripContact.Size = new System.Drawing.Size(23, 29);
+            this.toolStripContact.Tag = "Contact";
             this.toolStripContact.Text = "Contact";
             this.toolStripContact.Click += new System.EventHandler(this.Contact_Click);
             // 
@@ -628,6 +649,7 @@
             this.toolStripManual.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripManual.Name = "toolStripManual";
             this.toolStripManual.Size = new System.Drawing.Size(23, 29);
+            this.toolStripManual.Tag = "Manual";
             this.toolStripManual.Text = "Manual";
             this.toolStripManual.Click += new System.EventHandler(this.Manual_Click);
             // 
@@ -841,6 +863,7 @@
             this.toolStripInfo,
             this.toolStripFullScreen,
             this.toolStripColor,
+            this.toolStripTips,
             this.toolStripWallPaper});
             this.footerToolStrip.Location = new System.Drawing.Point(0, 704);
             this.footerToolStrip.Name = "footerToolStrip";
@@ -872,8 +895,10 @@
             this.toolStripFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripFullScreen.Image = global::BlackBoxWiki.Properties.Resources.FullScreenFill;
             this.toolStripFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripFullScreen.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.toolStripFullScreen.Name = "toolStripFullScreen";
             this.toolStripFullScreen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripFullScreen.Tag = "Full Screen";
             this.toolStripFullScreen.Text = "Full Screen";
             this.toolStripFullScreen.Click += new System.EventHandler(this.ScreenSize_Click);
             // 
@@ -889,10 +914,23 @@
             this.toolStripColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripColor.Name = "toolStripColor";
             this.toolStripColor.Size = new System.Drawing.Size(23, 22);
+            this.toolStripColor.Tag = "Color";
             this.toolStripColor.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripColor.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.toolStripColor.ToolTipText = "Color";
             this.toolStripColor.Click += new System.EventHandler(this.ColorTheme_Click);
+            // 
+            // toolStripTips
+            // 
+            this.toolStripTips.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripTips.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripTips.Image = global::BlackBoxWiki.Properties.Resources.ToolTipNew;
+            this.toolStripTips.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripTips.Name = "toolStripTips";
+            this.toolStripTips.Size = new System.Drawing.Size(23, 22);
+            this.toolStripTips.Tag = "Tool Tips [ON]";
+            this.toolStripTips.Text = "Tool Tips [ON]";
+            this.toolStripTips.Click += new System.EventHandler(this.ToolTip_Click);
             // 
             // toolStripWallPaper
             // 
@@ -903,6 +941,7 @@
             this.toolStripWallPaper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStripWallPaper.Name = "toolStripWallPaper";
             this.toolStripWallPaper.Size = new System.Drawing.Size(23, 23);
+            this.toolStripWallPaper.Tag = "Wallpaper";
             this.toolStripWallPaper.Text = "Wallpaper";
             this.toolStripWallPaper.Click += new System.EventHandler(this.WallPaper_Click);
             // 
@@ -1031,5 +1070,6 @@
         private System.Windows.Forms.ToolStripButton toolStripDelete;
         private System.Windows.Forms.ToolStripButton toolStripManual;
         private System.Windows.Forms.ToolStripButton toolStripMerge;
+        private System.Windows.Forms.ToolStripButton toolStripTips;
     }
 }

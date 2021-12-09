@@ -18,6 +18,8 @@ namespace BlackBoxWiki
 
         bool FullSize { get; set; } = false;
 
+        bool ToolTipControl { get; set; } = true;
+
         bool IsLocked { get; set; } = false;
 
         bool SingleClickControl { get; set; } = true;
@@ -197,15 +199,20 @@ namespace BlackBoxWiki
 
                 WikiDir.DeleteWiki(GetTitle(), out string msg);
 
-                WikiPrompt.ShowDialog(msg, "Remove Wiki", "OK", "Info");
+                reply = WikiPrompt.ShowDialog(msg, "Remove Wiki", "Exit", "Info");
             }
 
             UpdateToolInfo(false, "", false);
+
+            if (reply == "Info")
+            {
+                Manual_Click("Wiki Remove", EventArgs.Empty);
+            }
         }
 
         void BackArrow_Click(object sender, EventArgs e)
         {
-            if (WikiCntrl.FileType == FileTypes.Web)
+            if (WikiCntrl != null && WikiCntrl.FileType == FileTypes.Web)
             {
                 WebView2 webControl = WikiCntrl.Handle as WebView2;
 
@@ -228,7 +235,7 @@ namespace BlackBoxWiki
 
         void ForwardArrow_Click(object sender, EventArgs e)
         {
-            if (WikiCntrl.FileType == FileTypes.Web)
+            if (WikiCntrl != null && WikiCntrl.FileType == FileTypes.Web)
             {
                 WebView2 webControl = WikiCntrl.Handle as WebView2;
 
@@ -1068,6 +1075,61 @@ namespace BlackBoxWiki
 
             toolStripColor.ForeColor = color;
             toolStripColor.BackColor = color;
+        }
+
+        void ToolTip_Click(object sender, EventArgs e)
+        {
+            if (ToolTipControl)
+            {
+                ToolTipControl = false;
+
+                toolStripTips.Text = "Tool Tips [OFF]";
+
+                toolStripTips.Image = Resources.ToolTipOld;
+            }
+            else
+            {
+                ToolTipControl = true;
+
+                toolStripTips.Text = "Tool Tips [ON]";
+
+                toolStripTips.Image = Resources.ToolTipNew;
+            }
+
+            ToggleToolTips();
+        }
+
+        void ToggleToolTips()
+        {
+            foreach (var control in wikiToolStrip.Items)
+            {
+                if (control is ToolStripButton button)
+                {
+                    if (button.AutoToolTip)
+                    {
+                        button.Text = ToolTipControl ? button.Tag.ToString() : string.Empty;
+                    }
+                }
+
+                if (control is ToolStripDropDownButton dropDown)
+                {
+                    if (dropDown.AutoToolTip)
+                    {
+                        dropDown.Text = ToolTipControl ? dropDown.Tag.ToString() : string.Empty;
+                    }
+                }
+            }
+
+            foreach (var control in footerToolStrip.Items)
+            {
+                if (control is ToolStripButton button)
+                {
+                    if (button.AutoToolTip)
+                    {
+                        button.Text = ToolTipControl ? button.Tag.ToString() : string.Empty;
+                    }
+                }
+            }
         }
 
         void AITimer_Tick(object sender, EventArgs e)
