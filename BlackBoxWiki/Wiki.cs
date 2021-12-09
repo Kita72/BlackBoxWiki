@@ -587,17 +587,30 @@ namespace BlackBoxWiki
 
         internal void UpdateToolSettings()
         {
-            WikiDir.MoveFile = !Settings.Default.MoveFile;
+            if (WikiDir.MoveFile != Settings.Default.MoveFile)
+            {
                 toolStripCopy.PerformClick();
+            }
 
-            WikiDir.ScrapeFile = !Settings.Default.ScrapeFile;
+            if (WikiDir.ScrapeFile != Settings.Default.ScrapeFile)
+            {
                 toolStripScrape.PerformClick();
+            }
 
-            WikiDir.ScrapeLetter = Settings.Default.ScrapeLevel;
+            if (WikiDir.ScrapeLetter != Settings.Default.ScrapeLevel)
+            {
                 toolStripLetterLevel.DropDownItems[WikiDir.ScrapeLetter].PerformClick();
+            }
 
-            WikiDir.ScrapeFrequency = Settings.Default.ScrapeFreq;
+            if (WikiDir.ScrapeFrequency != Settings.Default.ScrapeFreq)
+            {
                 toolStripFreqLevel.DropDownItems[WikiDir.ScrapeFrequency].PerformClick();
+            }
+
+            if (ToolTipControl != Settings.Default.ToolTip)
+            {
+                toolStripTips.PerformClick();
+            }
         }
 
         void CopyMove_Click(object sender, EventArgs e)
@@ -1130,6 +1143,8 @@ namespace BlackBoxWiki
                     }
                 }
             }
+
+            Settings.Default.ToolTip = ToolTipControl;
         }
 
         void AITimer_Tick(object sender, EventArgs e)
