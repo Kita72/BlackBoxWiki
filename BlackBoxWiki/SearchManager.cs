@@ -36,7 +36,7 @@ namespace BlackBoxWiki
 
             WikiTopic topicHeader = new WikiTopic
             {
-                Title = $"Directory [{WikiUtility.ConvertFromSys(CurrentSearch.Meta)}]",
+                Title = $"Directory [ {CurrentSearch.Meta} ]",
                 ID = 0,
                 FileType = "SYSTEM"
             };
@@ -131,7 +131,7 @@ namespace BlackBoxWiki
 
         internal static void PushSearch(string meta)
         {
-            CurrentSearch = new WikiSearch(WikiUtility.ConvertToSys(meta), true);
+            CurrentSearch = new WikiSearch(meta, true);
 
             PrevSearch.Add(CurrentSearch);
 

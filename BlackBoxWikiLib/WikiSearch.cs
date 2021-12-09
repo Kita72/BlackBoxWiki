@@ -30,12 +30,12 @@ namespace BlackBoxWikiLib
 
         public WikiSearch(string newSearch, bool topicCheck = false)
         {
-            meta = newSearch;
+            meta = WikiUtility.ConvertToSys(newSearch);
 
             if (SearchStore.HasSearch(meta))
             {
                 if (topicCheck)
-                    SearchTopics(newSearch);
+                    SearchTopics(meta);
                 else
                     topics = new List<WikiTopic>();
             }

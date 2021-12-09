@@ -23,13 +23,16 @@ namespace BlackBoxWikiLib
             {
                 TextBuilder.Clear();
 
-                string[] multiWord = input.Split(' ');
-
-                if (multiWord.Length > 0)
+                if (input.Contains(" "))
                 {
-                    for (int i = 0; i < multiWord.Length; i++)
+                    string[] multiWord = input.Split(' ');
+
+                    if (multiWord.Length > 0)
                     {
-                        TextBuilder.Append(multiWord[i][0].ToString().ToUpper() + multiWord[i].Substring(1).ToLower() + " ");
+                        for (int i = 0; i < multiWord.Length; i++)
+                        {
+                            TextBuilder.Append(multiWord[i][0].ToString().ToUpper() + multiWord[i].Substring(1).ToLower() + " ");
+                        }
                     }
                 }
                 else

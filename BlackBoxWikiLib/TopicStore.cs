@@ -75,7 +75,7 @@ namespace BlackBoxWikiLib
 
         static void CreateSearch(WikiTopic wikiTopic)
         {
-            WikiSearch search = new WikiSearch(WikiUtility.ConvertToSys(wikiTopic.Title));
+            WikiSearch search = new WikiSearch(wikiTopic.Title);
 
             search.Topics.Add(wikiTopic);
 
@@ -83,7 +83,7 @@ namespace BlackBoxWikiLib
 
             foreach (string meta in wikiTopic.MetaTags)
             {
-                search = new WikiSearch(WikiUtility.ConvertToSys(meta));
+                search = new WikiSearch(meta);
 
                 search.Topics.Add(wikiTopic);
 
