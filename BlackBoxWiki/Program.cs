@@ -23,7 +23,7 @@ namespace BlackBoxWiki
             }
             else
             {
-                string result = WikiPrompt.ShowDialog("Is the Wiki Running?", "Start Up", "YES", "NO");
+                string result = WikiPrompt.ShowDialog("Is MyWiki Running?", "Start Up", "YES", "NO");
 
                 if (result == "YES")
                 {
@@ -34,7 +34,7 @@ namespace BlackBoxWiki
                 {
                     WikiHelper.WikiDir.StopWiki();
 
-                    Application.Exit(); //TODO: change to restart when done testing
+                    Application.Restart();
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace BlackBoxWiki
 
             WikiTopic topicHeader = new WikiTopic
             {
-                Title = $"Directory [ {CurrentSearch.Meta} ]",
+                Title = $"+Directory [ {CurrentSearch.Meta} ]",
                 ID = 0,
                 FileType = "SYSTEM"
             };

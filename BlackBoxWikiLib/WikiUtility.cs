@@ -23,9 +23,20 @@ namespace BlackBoxWikiLib
             {
                 TextBuilder.Clear();
 
-                if (input.Contains(" "))
+                string inputAdjusted = input;
+
+                bool isDirectory = false;
+
+                if (inputAdjusted.StartsWith("+"))
                 {
-                    string[] multiWord = input.Split(' ');
+                    inputAdjusted = inputAdjusted.TrimStart('+');
+
+                    isDirectory = true;
+                }
+
+                if (inputAdjusted.Contains(" "))
+                {
+                    string[] multiWord = inputAdjusted.Split(' ');
 
                     if (multiWord.Length > 0)
                     {
@@ -37,10 +48,13 @@ namespace BlackBoxWikiLib
                 }
                 else
                 {
-                    TextBuilder.Append(input[0].ToString().ToUpper() + input.Substring(1).ToLower());
+                    TextBuilder.Append(inputAdjusted[0].ToString().ToUpper() + inputAdjusted.Substring(1).ToLower());
                 }
 
-                return TextBuilder.ToString().Trim();
+                if (isDirectory)
+                    return $"+{TextBuilder.ToString().Trim()}";
+                else
+                    return TextBuilder.ToString().Trim();
             }
             else
             {

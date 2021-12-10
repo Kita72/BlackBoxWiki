@@ -395,7 +395,7 @@ namespace BlackBoxWiki
                     {
                         string directoryName = SearchListBox.GetItemText(SearchListBox.Items[0]);
 
-                        directoryName = directoryName.Replace("Directory [", "").TrimEnd(']').Trim();
+                        directoryName = directoryName.Replace("+Directory [", "").TrimEnd(']').Trim();
 
                         toolStripSearchText.Text = directoryName;
 
