@@ -514,7 +514,7 @@ namespace BlackBoxWiki
 
         void OpenTopic_Click(object sender, EventArgs e)
         {
-            if (SearchListBox.Visible && SearchListBox.SelectedIndex != -1)
+            if (SearchListBox.Visible && SearchListBox.SelectedIndex > 0)
             {
                 int topicID = Convert.ToInt32(SearchListBox.SelectedValue);
 
@@ -533,7 +533,7 @@ namespace BlackBoxWiki
 
         void EditTopic_Click(object sender, EventArgs e)
         {
-            if (SearchListBox.Visible && SearchListBox.SelectedIndex != -1)
+            if (SearchListBox.Visible && SearchListBox.SelectedIndex > 0)
             {
                 int topicID = Convert.ToInt32(SearchListBox.SelectedValue);
 
@@ -549,27 +549,18 @@ namespace BlackBoxWiki
 
                     ClearAllText();
                 }
-                else
-                {
-                    string Reply = WikiPrompt.ShowDialog("Not able to edit this file/link!", "Edit Topic", "OK", "Info");
-
-                    if (Reply == "Info")
-                    {
-                        YouTube_Click(sender, e);
-                    }
-                }
             }
         }
 
         void RemoveTopic_Click(object sender, EventArgs e)
         {
-            if (SearchListBox.Visible && SearchListBox.SelectedIndex != -1)
+            if (SearchListBox.Visible && SearchListBox.SelectedIndex > 0)
             {
                 int topicID = Convert.ToInt32(SearchListBox.SelectedValue);
 
                 WikiTopic topic = TopicManager.GetTopic(topicID);
 
-                if (topic != null && topic.ID > 0)
+                if (topic != null)
                 {
                     CloseScreens();
 
