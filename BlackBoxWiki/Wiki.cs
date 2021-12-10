@@ -1124,7 +1124,7 @@ namespace BlackBoxWiki
                     }
                 }
 
-                if (control is ToolStripDropDownButton dropDown)
+                if (control is ToolStripSplitButton dropDown)
                 {
                     if (dropDown.AutoToolTip)
                     {

@@ -167,7 +167,6 @@
             this.toolStripLogo.Size = new System.Drawing.Size(23, 29);
             this.toolStripLogo.Tag = "Home";
             this.toolStripLogo.Text = "Home";
-            this.toolStripLogo.ToolTipText = "Home";
             this.toolStripLogo.Click += new System.EventHandler(this.HomeLogo_Click);
             // 
             // toolStripTitle
@@ -371,7 +370,6 @@
             this.toolStripLetterLevel.Size = new System.Drawing.Size(32, 29);
             this.toolStripLetterLevel.Tag = "Letter Count";
             this.toolStripLetterLevel.Text = "Letter Count";
-            this.toolStripLetterLevel.ToolTipText = "Letter Count";
             this.toolStripLetterLevel.ButtonClick += new System.EventHandler(this.ScrapeLetter_Click);
             // 
             // charOff
@@ -931,7 +929,6 @@
             this.toolStripColor.Text = "Color Theme";
             this.toolStripColor.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripColor.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            this.toolStripColor.ToolTipText = "Color";
             this.toolStripColor.Click += new System.EventHandler(this.ColorTheme_Click);
             // 
             // toolStripTips
