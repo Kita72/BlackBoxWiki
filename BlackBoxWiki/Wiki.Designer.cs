@@ -675,7 +675,7 @@
             this.viewerPanel.RowCount = 1;
             this.viewerPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97F));
             this.viewerPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.viewerPanel.Size = new System.Drawing.Size(1264, 672);
+            this.viewerPanel.Size = new System.Drawing.Size(1264, 671);
             this.viewerPanel.TabIndex = 1;
             this.viewerPanel.Visible = false;
             // 
@@ -694,7 +694,7 @@
             this.searchPanel.RowCount = 2;
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.searchPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.searchPanel.Size = new System.Drawing.Size(355, 672);
+            this.searchPanel.Size = new System.Drawing.Size(355, 671);
             this.searchPanel.TabIndex = 1;
             // 
             // SearchListBox
@@ -705,7 +705,7 @@
             this.SearchListBox.ItemHeight = 18;
             this.SearchListBox.Location = new System.Drawing.Point(3, 3);
             this.SearchListBox.Name = "SearchListBox";
-            this.SearchListBox.Size = new System.Drawing.Size(349, 531);
+            this.SearchListBox.Size = new System.Drawing.Size(349, 530);
             this.SearchListBox.TabIndex = 0;
             this.SearchListBox.Click += new System.EventHandler(this.SearchList_Click);
             this.SearchListBox.DoubleClick += new System.EventHandler(this.SearchList_DoubleClick);
@@ -716,7 +716,7 @@
             this.InfoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InfoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InfoTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.InfoTextBox.Location = new System.Drawing.Point(3, 540);
+            this.InfoTextBox.Location = new System.Drawing.Point(3, 539);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
             this.InfoTextBox.ReadOnly = true;
@@ -741,7 +741,7 @@
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.messagePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.messagePanel.Size = new System.Drawing.Size(909, 672);
+            this.messagePanel.Size = new System.Drawing.Size(909, 671);
             this.messagePanel.TabIndex = 2;
             this.messagePanel.Visible = false;
             // 
@@ -753,7 +753,7 @@
             this.messageBack.Location = new System.Drawing.Point(227, 134);
             this.messageBack.Margin = new System.Windows.Forms.Padding(0);
             this.messageBack.Name = "messageBack";
-            this.messageBack.Size = new System.Drawing.Size(454, 336);
+            this.messageBack.Size = new System.Drawing.Size(454, 335);
             this.messageBack.TabIndex = 0;
             // 
             // messageGrid
@@ -776,7 +776,7 @@
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.messageGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.messageGrid.Size = new System.Drawing.Size(454, 336);
+            this.messageGrid.Size = new System.Drawing.Size(454, 335);
             this.messageGrid.TabIndex = 0;
             // 
             // replyTextBox
@@ -845,7 +845,7 @@
             // wikiMediaPlayer
             // 
             this.wikiMediaPlayer.Enabled = true;
-            this.wikiMediaPlayer.Location = new System.Drawing.Point(230, 473);
+            this.wikiMediaPlayer.Location = new System.Drawing.Point(230, 472);
             this.wikiMediaPlayer.Name = "wikiMediaPlayer";
             this.wikiMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wikiMediaPlayer.OcxState")));
             this.wikiMediaPlayer.Size = new System.Drawing.Size(75, 23);
@@ -865,9 +865,9 @@
             this.toolStripColor,
             this.toolStripTips,
             this.toolStripWallPaper});
-            this.footerToolStrip.Location = new System.Drawing.Point(0, 704);
+            this.footerToolStrip.Location = new System.Drawing.Point(0, 703);
             this.footerToolStrip.Name = "footerToolStrip";
-            this.footerToolStrip.Size = new System.Drawing.Size(1264, 25);
+            this.footerToolStrip.Size = new System.Drawing.Size(1264, 26);
             this.footerToolStrip.TabIndex = 0;
             this.footerToolStrip.Text = "FooterToolStrip";
             // 
@@ -877,7 +877,7 @@
             this.toolStripReset.Image = global::BlackBoxWiki.Properties.Resources.Reset;
             this.toolStripReset.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripReset.Name = "toolStripReset";
-            this.toolStripReset.Size = new System.Drawing.Size(23, 22);
+            this.toolStripReset.Size = new System.Drawing.Size(23, 23);
             this.toolStripReset.Tag = "Settings Reset";
             this.toolStripReset.Text = "Settings Reset";
             this.toolStripReset.Click += new System.EventHandler(this.SettingsReset_Click);
@@ -896,7 +896,7 @@
             this.toolStripInfo.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripInfo.ForeColor = System.Drawing.Color.Gold;
             this.toolStripInfo.Name = "toolStripInfo";
-            this.toolStripInfo.Size = new System.Drawing.Size(117, 22);
+            this.toolStripInfo.Size = new System.Drawing.Size(117, 23);
             this.toolStripInfo.Text = "Tool Information";
             // 
             // toolStripFullScreen
@@ -908,7 +908,7 @@
             this.toolStripFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripFullScreen.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.toolStripFullScreen.Name = "toolStripFullScreen";
-            this.toolStripFullScreen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripFullScreen.Size = new System.Drawing.Size(23, 23);
             this.toolStripFullScreen.Tag = "Full Screen";
             this.toolStripFullScreen.Text = "Full Screen";
             this.toolStripFullScreen.Click += new System.EventHandler(this.ScreenSize_Click);
@@ -924,7 +924,7 @@
             this.toolStripColor.Image = global::BlackBoxWiki.Properties.Resources.ColorBack;
             this.toolStripColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripColor.Name = "toolStripColor";
-            this.toolStripColor.Size = new System.Drawing.Size(23, 22);
+            this.toolStripColor.Size = new System.Drawing.Size(23, 23);
             this.toolStripColor.Tag = "Color Theme";
             this.toolStripColor.Text = "Color Theme";
             this.toolStripColor.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
@@ -939,7 +939,7 @@
             this.toolStripTips.Image = global::BlackBoxWiki.Properties.Resources.ToolTipNew;
             this.toolStripTips.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripTips.Name = "toolStripTips";
-            this.toolStripTips.Size = new System.Drawing.Size(23, 22);
+            this.toolStripTips.Size = new System.Drawing.Size(23, 23);
             this.toolStripTips.Tag = "Tool Tips";
             this.toolStripTips.Text = "Tool Tips";
             this.toolStripTips.Click += new System.EventHandler(this.ToolTip_Click);
@@ -952,7 +952,7 @@
             this.toolStripWallPaper.Image = global::BlackBoxWiki.Properties.Resources.WallPaper;
             this.toolStripWallPaper.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripWallPaper.Name = "toolStripWallPaper";
-            this.toolStripWallPaper.Size = new System.Drawing.Size(23, 22);
+            this.toolStripWallPaper.Size = new System.Drawing.Size(23, 23);
             this.toolStripWallPaper.Tag = "Wallpaper";
             this.toolStripWallPaper.Text = "Wallpaper";
             this.toolStripWallPaper.Click += new System.EventHandler(this.WallPaper_Click);
