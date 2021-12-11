@@ -342,8 +342,8 @@
             this.toolStripScrape.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
             this.toolStripScrape.Name = "toolStripScrape";
             this.toolStripScrape.Size = new System.Drawing.Size(23, 29);
-            this.toolStripScrape.Tag = "Scrape File [OFF]";
-            this.toolStripScrape.Text = "Scrape File [OFF]";
+            this.toolStripScrape.Tag = "Scrape File";
+            this.toolStripScrape.Text = "Scrape File";
             this.toolStripScrape.Click += new System.EventHandler(this.ScrapeFile_Click);
             // 
             // toolStripLetterLevel
@@ -375,7 +375,7 @@
             // charOff
             // 
             this.charOff.Name = "charOff";
-            this.charOff.Size = new System.Drawing.Size(180, 22);
+            this.charOff.Size = new System.Drawing.Size(81, 22);
             this.charOff.Tag = "0";
             this.charOff.Text = "0";
             this.charOff.Click += new System.EventHandler(this.CharLevel_Click);
@@ -383,7 +383,7 @@
             // charOne
             // 
             this.charOne.Name = "charOne";
-            this.charOne.Size = new System.Drawing.Size(180, 22);
+            this.charOne.Size = new System.Drawing.Size(81, 22);
             this.charOne.Tag = "1";
             this.charOne.Text = "1";
             this.charOne.Click += new System.EventHandler(this.CharLevel_Click);
@@ -391,7 +391,7 @@
             // charTwo
             // 
             this.charTwo.Name = "charTwo";
-            this.charTwo.Size = new System.Drawing.Size(180, 22);
+            this.charTwo.Size = new System.Drawing.Size(81, 22);
             this.charTwo.Tag = "2";
             this.charTwo.Text = "2";
             this.charTwo.Click += new System.EventHandler(this.CharLevel_Click);
@@ -399,7 +399,7 @@
             // charThree
             // 
             this.charThree.Name = "charThree";
-            this.charThree.Size = new System.Drawing.Size(180, 22);
+            this.charThree.Size = new System.Drawing.Size(81, 22);
             this.charThree.Tag = "3";
             this.charThree.Text = "3";
             this.charThree.Click += new System.EventHandler(this.CharLevel_Click);
@@ -407,7 +407,7 @@
             // charFour
             // 
             this.charFour.Name = "charFour";
-            this.charFour.Size = new System.Drawing.Size(180, 22);
+            this.charFour.Size = new System.Drawing.Size(81, 22);
             this.charFour.Tag = "4";
             this.charFour.Text = "4";
             this.charFour.Click += new System.EventHandler(this.CharLevel_Click);
@@ -415,7 +415,7 @@
             // charFive
             // 
             this.charFive.Name = "charFive";
-            this.charFive.Size = new System.Drawing.Size(180, 22);
+            this.charFive.Size = new System.Drawing.Size(81, 22);
             this.charFive.Tag = "5";
             this.charFive.Text = "5";
             this.charFive.Click += new System.EventHandler(this.CharLevel_Click);
@@ -423,7 +423,7 @@
             // charSix
             // 
             this.charSix.Name = "charSix";
-            this.charSix.Size = new System.Drawing.Size(180, 22);
+            this.charSix.Size = new System.Drawing.Size(81, 22);
             this.charSix.Tag = "6";
             this.charSix.Text = "6";
             this.charSix.Click += new System.EventHandler(this.CharLevel_Click);
@@ -431,7 +431,7 @@
             // charSeven
             // 
             this.charSeven.Name = "charSeven";
-            this.charSeven.Size = new System.Drawing.Size(180, 22);
+            this.charSeven.Size = new System.Drawing.Size(81, 22);
             this.charSeven.Tag = "7";
             this.charSeven.Text = "7";
             this.charSeven.Click += new System.EventHandler(this.CharLevel_Click);
@@ -439,7 +439,7 @@
             // charEight
             // 
             this.charEight.Name = "charEight";
-            this.charEight.Size = new System.Drawing.Size(180, 22);
+            this.charEight.Size = new System.Drawing.Size(81, 22);
             this.charEight.Tag = "8";
             this.charEight.Text = "8";
             this.charEight.Click += new System.EventHandler(this.CharLevel_Click);
@@ -447,7 +447,7 @@
             // charNine
             // 
             this.charNine.Name = "charNine";
-            this.charNine.Size = new System.Drawing.Size(180, 22);
+            this.charNine.Size = new System.Drawing.Size(81, 22);
             this.charNine.Tag = "9";
             this.charNine.Text = "9";
             this.charNine.Click += new System.EventHandler(this.CharLevel_Click);
@@ -480,7 +480,7 @@
             // freqOff
             // 
             this.freqOff.Name = "freqOff";
-            this.freqOff.Size = new System.Drawing.Size(180, 22);
+            this.freqOff.Size = new System.Drawing.Size(81, 22);
             this.freqOff.Tag = "0";
             this.freqOff.Text = "0";
             this.freqOff.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -488,7 +488,7 @@
             // freqOne
             // 
             this.freqOne.Name = "freqOne";
-            this.freqOne.Size = new System.Drawing.Size(180, 22);
+            this.freqOne.Size = new System.Drawing.Size(81, 22);
             this.freqOne.Tag = "1";
             this.freqOne.Text = "1";
             this.freqOne.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -496,7 +496,7 @@
             // freqTwo
             // 
             this.freqTwo.Name = "freqTwo";
-            this.freqTwo.Size = new System.Drawing.Size(180, 22);
+            this.freqTwo.Size = new System.Drawing.Size(81, 22);
             this.freqTwo.Tag = "2";
             this.freqTwo.Text = "2";
             this.freqTwo.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -504,7 +504,7 @@
             // freqThree
             // 
             this.freqThree.Name = "freqThree";
-            this.freqThree.Size = new System.Drawing.Size(180, 22);
+            this.freqThree.Size = new System.Drawing.Size(81, 22);
             this.freqThree.Tag = "3";
             this.freqThree.Text = "3";
             this.freqThree.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -512,7 +512,7 @@
             // freqFour
             // 
             this.freqFour.Name = "freqFour";
-            this.freqFour.Size = new System.Drawing.Size(180, 22);
+            this.freqFour.Size = new System.Drawing.Size(81, 22);
             this.freqFour.Tag = "4";
             this.freqFour.Text = "4";
             this.freqFour.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -520,7 +520,7 @@
             // freqFive
             // 
             this.freqFive.Name = "freqFive";
-            this.freqFive.Size = new System.Drawing.Size(180, 22);
+            this.freqFive.Size = new System.Drawing.Size(81, 22);
             this.freqFive.Tag = "5";
             this.freqFive.Text = "5";
             this.freqFive.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -528,7 +528,7 @@
             // freqSix
             // 
             this.freqSix.Name = "freqSix";
-            this.freqSix.Size = new System.Drawing.Size(180, 22);
+            this.freqSix.Size = new System.Drawing.Size(81, 22);
             this.freqSix.Tag = "6";
             this.freqSix.Text = "6";
             this.freqSix.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -536,7 +536,7 @@
             // freqSeven
             // 
             this.freqSeven.Name = "freqSeven";
-            this.freqSeven.Size = new System.Drawing.Size(180, 22);
+            this.freqSeven.Size = new System.Drawing.Size(81, 22);
             this.freqSeven.Tag = "7";
             this.freqSeven.Text = "7";
             this.freqSeven.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -544,7 +544,7 @@
             // freqEight
             // 
             this.freqEight.Name = "freqEight";
-            this.freqEight.Size = new System.Drawing.Size(180, 22);
+            this.freqEight.Size = new System.Drawing.Size(81, 22);
             this.freqEight.Tag = "8";
             this.freqEight.Text = "8";
             this.freqEight.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -552,7 +552,7 @@
             // freqNine
             // 
             this.freqNine.Name = "freqNine";
-            this.freqNine.Size = new System.Drawing.Size(180, 22);
+            this.freqNine.Size = new System.Drawing.Size(81, 22);
             this.freqNine.Tag = "9";
             this.freqNine.Text = "9";
             this.freqNine.Click += new System.EventHandler(this.FreqLevel_Click);
@@ -940,8 +940,8 @@
             this.toolStripTips.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripTips.Name = "toolStripTips";
             this.toolStripTips.Size = new System.Drawing.Size(23, 22);
-            this.toolStripTips.Tag = "Tool Tips [ON]";
-            this.toolStripTips.Text = "Tool Tips [ON]";
+            this.toolStripTips.Tag = "Tool Tips";
+            this.toolStripTips.Text = "Tool Tips";
             this.toolStripTips.Click += new System.EventHandler(this.ToolTip_Click);
             // 
             // toolStripWallPaper

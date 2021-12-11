@@ -618,7 +618,8 @@ namespace BlackBoxWiki
         {
             if (!WikiDir.MoveFile)
             {
-                toolStripCopy.Text = "Move File";
+                if (!ToolTipControl)
+                    toolStripCopy.Text = "Move File";
 
                 toolStripCopy.Image = Resources.MoveFileNew;
 
@@ -626,7 +627,8 @@ namespace BlackBoxWiki
             }
             else
             {
-                toolStripCopy.Text = "Copy File";
+                if (!ToolTipControl)
+                    toolStripCopy.Text = "Copy File";
 
                 toolStripCopy.Image = Resources.CopyFileNew;
 
@@ -643,16 +645,12 @@ namespace BlackBoxWiki
                 toolStripScrape.Image = Resources.ScrapeFileOld;
 
                 WikiDir.ScrapeFile = true;
-
-                toolStripScrape.Text = "Scrape File [ON]";
             }
             else
             {
                 toolStripScrape.Image = Resources.ScrapeFileNew;
 
                 WikiDir.ScrapeFile = false;
-
-                toolStripScrape.Text = "Scrape File [OFF]";
             }
 
             Settings.Default.ScrapeFile = WikiDir.ScrapeFile;
@@ -1044,6 +1042,8 @@ namespace BlackBoxWiki
                                 BackgroundImage = WikiHelper.WallPaper;
 
                                 BackgroundImageLayout = ImageLayout.Stretch;
+
+                                HomeLogo_Click(sender, EventArgs.Empty);
                             }
                             catch
                             {
@@ -1096,15 +1096,11 @@ namespace BlackBoxWiki
             {
                 ToolTipControl = false;
 
-                toolStripTips.Text = "Tool Tips [OFF]";
-
                 toolStripTips.Image = Resources.ToolTipOld;
             }
             else
             {
                 ToolTipControl = true;
-
-                toolStripTips.Text = "Tool Tips [ON]";
 
                 toolStripTips.Image = Resources.ToolTipNew;
             }
